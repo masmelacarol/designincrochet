@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header__container">
+    <div class="header__content">
+      <figure class="header__content--logo">
+        <img src="assets/images/logo.svg" alt="logo" class="icon_logo" />
+      </figure>
+      <nav class="header__content--nav">
+        <ul>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="active">Inicio</a>
+          </li>
+          <li>
+            <a [routerLink]="['/categories']" routerLinkActive="active">
+              Categorias
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__content">
+      <nav class="header__content--nav">
+        <ul>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="active">
+              Iniciar Sesión
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="active">
+              <mat-icon class="icon" aria-hidden="false" aria-label="search icon">search</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="active">
+              <mat-icon class="icon" aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

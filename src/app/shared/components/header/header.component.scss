@@ -1,0 +1,31 @@
+@import '../../../../vars';
+
+.header {
+  padding: var(--pd);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    figure {
+      margin-right: var(--mg);
+    }
+
+    &--nav {
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+
+        li {
+          margin-right: var(--mg);
+        }
+      }
+    }
+  }
+}
