@@ -1,0 +1,14 @@
+@import '../../../../vars';
+
+.footer {
+  padding: var(--pd);
+
+  &__container {
+    width: 50%;
+    margin: 0 auto;
+
+    &--copy {
+      text-align: center;
+    }
+  }
+}
