@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './vars';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Red Hat Display', sans-serif;
+  background: var(--bg-main);
+  color: var(--color);
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 48px
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+
+p,
+a,
+input,
+label {
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+strong {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+button {
+  font-size: 16px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 20px !important;
+  height: 20px !important;
+
+  &_logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.btn {
+  background: var(--bg-color-secondary);
+  border-radius: 10px;
+}
