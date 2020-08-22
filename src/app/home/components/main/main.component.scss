@@ -1,0 +1,74 @@
+@import '../../../../vars';
+
+.carousel {
+  padding: var(--pd);
+  display: flex;
+  width: 100%;
+  min-height: 65vh;
+
+
+
+  &__content {
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      padding: var(--pd);
+
+      figure {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        position: relative;
+
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &--container {
+
+      p,
+      .detail {
+        margin: var(--mg) 0;
+      }
+
+      .title {
+        margin-bottom: 10px;
+      }
+
+      .description {
+
+        .detail {
+          display: flex;
+
+          span {
+            display: inline-block;
+            margin-left: 5px;
+
+            &.color {
+              width: 20px;
+              height: 20px;
+              border-radius: 5px;
+
+            }
+          }
+        }
+      }
+
+
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+}
