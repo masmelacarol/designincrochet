@@ -1,36 +1,48 @@
-<div *ngFor="let product of products, let index as i" class="carousel">
-  <div class=" carousel__content">
-    <div class="container">
-      <div class="carousel__content--container">
-        <div class="title">
-          <h4>{{product.name}}</h4>
-        </div>
-        <div class="description">
-          <strong>{{product.price | currency}}</strong>
-          <p>{{product.description}}</p>
-          <div class="detail">
-            <h6>Color: </h6>
-            <div *ngFor="let bg of product.color">
-              <span class="color" [style.background]="bg"></span>
+<section class="swiper-container carousel">
+  <div class="swiper-wrapper">
+    <div *ngFor="let product of products" class=" swiper-slide">
+      <div class=" carousel__content">
+        <div class="container">
+          <div class="carousel__content--container">
+            <div class="title" data-swiper-parallax="-100">
+              <h4>{{product.name}}</h4>
+            </div>
+            <div class="description">
+              <strong>{{product.price | currency}}</strong>
+              <p>{{product.description}}</p>
+              <div class="detail">
+                <h6>Color: </h6>
+                <div *ngFor="let bg of product.color">
+                  <span class="color" [style.background]="bg"></span>
+                </div>
+              </div>
+              <div class="detail">
+                <h6>Talla: </h6>
+                <div *ngFor="let sz of product.size">
+                  <span>{{sz}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__content--btn">
+              <button type="button" class="btn">Añadir al carrito</button>
             </div>
           </div>
-          <div class="detail">
-            <h6>Talla: </h6>
-            <div *ngFor="let sz of product.size">
-              <span>{{sz}}</span>
-            </div>
+          <div class="carousel__content--container image">
+            <figure>
+              <img [src]=" product.images" [alt]="product.name">
+            </figure>
           </div>
         </div>
-        <div class="carousel__content--btn">
-          <button type="button" class="btn">Añadir al carrito</button>
-        </div>
       </div>
-      <div class="carousel__content--container">
-        <figure>
-          <img [src]=" product.images" alt="">
-        </figure>
-      </div>
-    </div>
+      <div class="swiper-pagination"></div>
 
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <!-- If we need pagination -->
   </div>
-</div>
+</section>

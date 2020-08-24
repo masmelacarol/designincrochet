@@ -1,14 +1,17 @@
 @import '../../../../vars';
 
 .carousel {
-  padding: var(--pd);
-  display: flex;
-  width: 100%;
-  min-height: 65vh;
+  .swiper-container {
+    width: 600px;
+    height: 300px;
+  }
 
 
 
   &__content {
+    margin: 20px auto;
+    width: 80%;
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -17,22 +20,24 @@
       justify-items: center;
       align-items: center;
       padding: var(--pd);
-
-      figure {
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        position: relative;
-
-
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
-      }
     }
 
     &--container {
+      padding: var(--pd);
+
+      &.image {
+        // align-self: flex-start;
+
+        figure {
+          width: 250px;
+          height: 250px;
+
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
 
       p,
       .detail {
