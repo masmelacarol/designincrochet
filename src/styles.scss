@@ -81,6 +81,10 @@ img {
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .btn {
   background: var(--bg-color-secondary);
   border-radius: 10px;

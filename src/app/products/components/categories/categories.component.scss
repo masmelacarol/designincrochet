@@ -6,6 +6,10 @@
   &__content {
     padding: var(--pd);
     display: flex;
+    width: 100%;
+    padding: calc(var(--pd) + 10px);
+    position: relative;
+    overflow-x: scroll;
 
     @media (max-width: 600px) {
       padding: 0;

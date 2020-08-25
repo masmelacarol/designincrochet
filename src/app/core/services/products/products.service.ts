@@ -48,6 +48,37 @@ export class ProductsService {
       images: ['assets/images/dress_2.png'],
       category: 'swimsuit',
     },
+    {
+      id: '5',
+      name: 'Vestido de baño en crochet',
+      price: 80000,
+      description:
+        'Vestido de dos piezas con copas protectoras, tipo strapless ajustable en la espalda. Corte en glúteos tipo panty, forro suave al tacto, hecho a mano en crochet.',
+      color: ['#9f6f78', '#088ea0', '#29130d'],
+      size: ['S', 'M', 'L', 'XL'],
+      images: ['assets/images/dress_4.png'],
+      category: 'swimsuit',
+    },
+    {
+      id: '6',
+      name: 'Saco y zapatos de bebe en crochet',
+      price: 60000,
+      description: 'Saco y zapatos de bebe, hecho a mano en crochet.',
+      color: ['#014871', '#9fb7bb'],
+      size: ['3', '6'],
+      images: ['assets/images/dress_3.png'],
+      category: 'coat',
+    },
+    {
+      id: '7',
+      name: 'Ramo de flores en crochet',
+      price: 30000,
+      description: 'Ramo de flores, hecho a mano en crochet.',
+      color: ['#903e01', '#c1bcc2', '#330a13', '#001f0a'],
+      size: ['S', 'M'],
+      images: ['assets/images/flowers_1.png'],
+      category: 'flowers',
+    },
   ];
 
   constructor() {}
