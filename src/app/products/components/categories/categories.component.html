@@ -2,7 +2,8 @@
   <h4>{{category | uppercase}}</h4>
   <div class="categories__content">
     <a [routerLink]="['/products', item.id]" *ngFor="let item of itemCategories[category]">
-      <app-cards [category]="item" [color]="'var(--bg-color-secondary)'" [size]="70" class="categories__content--item">
+      <app-cards [product]="item" [color]="'var(--bg-color-secondary)'" [position]="'flex-end'" [size]="70"
+        [imageWidth]="150" class="categories__content--item">
       </app-cards>
     </a>
   </div>

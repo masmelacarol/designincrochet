@@ -9,82 +9,27 @@
 
 
   &__content {
-    margin: 20px auto;
+    margin: auto;
     width: 80%;
+    height: 70vh;
 
 
-
-    .container {
+    app-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      justify-content: center;
-      justify-items: center;
+      height: 80%;
       align-items: center;
-      padding: var(--pd);
 
-
-      @media (max-width: 425px) {
-        justify-items: flex-start;
-      }
-    }
-
-    &--container {
-      padding: var(--pd);
-
-      &.image {
-        // align-self: flex-start;
-
-        figure {
-          width: 250px;
-          height: 250px;
-
-          img {
-            width: 100%;
-            object-fit: cover;
+      .card__container {
+        &--image {
+          figure {
+            width: 200px;
           }
+
         }
       }
-
-      p,
-      .detail {
-        margin: var(--mg) 0;
-
-        @media (max-width: 425px) {
-          margin: calc(var(--mg) / 2) 0;
-        }
-      }
-
-      .title {
-        margin-bottom: 10px;
-      }
-
-      .description {
-
-        .detail {
-          display: flex;
-
-          span {
-            display: inline-block;
-            margin-left: 5px;
-
-            &.color {
-              width: 20px;
-              height: 20px;
-              border-radius: 5px;
-
-            }
-          }
-        }
-      }
-
 
     }
-
-    &--btn {
-      display: flex;
-      justify-content: center;
-    }
-
   }
 }

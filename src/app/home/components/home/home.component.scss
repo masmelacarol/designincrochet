@@ -2,5 +2,8 @@
 
 .home {
   background: var(--bg-white);
-  // overflow: hidden;
+
+  .title {
+    padding: var(--pd);
+  }
 }
