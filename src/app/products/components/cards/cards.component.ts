@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
   @Input() category;
+  @Input() color;
+  @Input() size = -1;
 
   constructor() {
     console.log('CardsComponent -> category', this.category);

@@ -1,6 +1,7 @@
-<div class="categories__content--container">
+<div class="card__container">
   <h6>{{category.name}}</h6>
-  <p>{{category.description | slice: 0 : 100}}...</p>
+  <strong>{{category.price | currency}}</strong>
+  <p>{{category.description | slice:0:size }}</p>
   <div class="detail">
     <h6>Color: </h6>
     <div *ngFor="let bg of category.color">
@@ -13,10 +14,10 @@
       <span>{{sz}}</span>
     </div>
   </div>
-  <strong>{{category.price | currency}}</strong>
+
   <button class="btn">Añadir al carrito</button>
 </div>
-<div class="categories__content--container image">
+<div class="card__container--image" [style.background]="color || 'transparent'">
   <figure>
     <img [src]="category.images" [alt]="category.name">
   </figure>
