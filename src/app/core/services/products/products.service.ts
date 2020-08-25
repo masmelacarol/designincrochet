@@ -19,17 +19,6 @@ export class ProductsService {
     },
     {
       id: '2',
-      name: 'Vestido de baño en crochet',
-      price: 70000,
-      description:
-        'Vestido de dos piezas con copas protectoras, cargaderas graduables y ajustables en el cuello y en espalda. Corte en glúteos tipo tanga, forro suave al tacto, hecho a mano en crochet.',
-      color: ['#471419'],
-      size: ['S'],
-      images: ['assets/images/dress_2.png'],
-      category: 'swimsuit',
-    },
-    {
-      id: '3',
       name: 'Gorro en crochet',
       price: 50000,
       description: 'Gorro hecho a mano en crochet.',
@@ -39,7 +28,7 @@ export class ProductsService {
       category: 'hat',
     },
     {
-      id: '5',
+      id: '3',
       name: 'Gorro/bufanda en crochet',
       price: 70000,
       description: 'Gorro y bufanda hechos a mano en crochet.',
@@ -47,6 +36,17 @@ export class ProductsService {
       size: ['Unica'],
       images: ['assets/images/scarf_1.png'],
       category: 'scarf',
+    },
+    {
+      id: '4',
+      name: 'Vestido de baño en crochet',
+      price: 70000,
+      description:
+        'Vestido de dos piezas con copas protectoras, cargaderas graduables y ajustables en el cuello y en espalda. Corte en glúteos tipo tanga, forro suave al tacto, hecho a mano en crochet.',
+      color: ['#471419'],
+      size: ['S'],
+      images: ['assets/images/dress_2.png'],
+      category: 'swimsuit',
     },
   ];
 

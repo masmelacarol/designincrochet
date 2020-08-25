@@ -12,30 +12,6 @@ Swiper.use([Navigation, Pagination]);
 export class MainComponent implements OnInit, AfterViewInit {
   products: Product[];
   mySwiper: Swiper;
-  config = {
-    a11y: true,
-    direction: 'horizontal',
-    slidesPerView: 3,
-    slideToClickedSlide: true,
-    mousewheel: true,
-    scrollbar: false,
-    watchSlidesProgress: true,
-    navigation: true,
-    keyboard: true,
-    pagination: false,
-    centeredSlides: true,
-    loop: true,
-    roundLengths: true,
-    slidesOffsetBefore: 100,
-    slidesOffsetAfter: 100,
-    spaceBetween: 50,
-    breakpoints: {
-      // when window width is >= 320px
-      320: {
-        slidesPerView: 1,
-      },
-    },
-  };
   constructor(private productsServices: ProductsService) {}
 
   ngOnInit(): void {
@@ -48,8 +24,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       loop: true,
       pagination: {
         el: '.swiper-pagination',
-        renderBullet: (index, className) =>
-          '<span class="' + className + '">' + (index + 1) + '</span>',
       },
       navigation: {
         nextEl: '.swiper-button-next',
@@ -58,6 +32,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       scrollbar: {
         el: '.swiper-scrollbar',
       },
+      grabCursor: true,
     });
   }
 }
