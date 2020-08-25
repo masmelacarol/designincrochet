@@ -85,4 +85,9 @@ export class ProductsService {
   getAllProducts(): Product[] {
     return this.products;
   }
+
+  getProductById(id): Product {
+    const product = this.products.find((item) => item.id === id);
+    return product;
+  }
 }
