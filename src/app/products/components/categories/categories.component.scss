@@ -7,13 +7,25 @@
     padding: var(--pd);
     display: flex;
 
+    @media (max-width: 600px) {
+      padding: 0;
+      flex-wrap: wrap;
+      width: 100vh;
+    }
+
     a {
       transition: all 0.5s;
+      width: 100%;
 
       &:hover {
         text-decoration: none;
-        transform: scale(1.1);
-        transition: all 0.5s;
+        transform: scale(1.05);
+        transform-origin: left;
+        transition: transform-origin, transform 0.5s;
+
+        @media (max-width: 600px) {
+          transform-origin: center center;
+        }
       }
     }
 
@@ -27,10 +39,15 @@
       justify-items: center;
       border-radius: 20px;
       align-items: center;
-      min-height: 320px;
+      min-height: 260px;
       margin-right: var(--mg);
       background: var(--bg-white);
       cursor: pointer;
+
+      @media (max-width: 600px) {
+        width: 90vw;
+        margin: 10px 0;
+      }
     }
 
   }

@@ -7,20 +7,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 320px) {
+      flex-wrap: wrap;
+      margin: auto;
+    }
   }
 
   &__content {
     display: flex;
     align-items: center;
 
+    @media (max-width: 320px) {
+      margin: auto;
+    }
+
     figure {
       margin-right: var(--mg);
+
+      @media (max-width: 425px) {
+        margin-right: calc(var(--mg) / 2);
+      }
     }
 
     &--nav {
+      &.login {
+
+        padding-top: 8px;
+
+      }
+
       ul {
         li {
           margin-right: var(--mg);
+
+          @media (max-width: 425px) {
+            margin-right: calc(var(--mg) / 2);
+          }
         }
       }
     }

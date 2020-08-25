@@ -20,17 +20,15 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.mySwiper = new Swiper('.swiper-container', {
-      direction: 'horizontal',
-      loop: true,
+      spaceBetween: 30,
+      effect: 'fade',
       pagination: {
         el: '.swiper-pagination',
+        clickable: true,
       },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-      },
-      scrollbar: {
-        el: '.swiper-scrollbar',
       },
       grabCursor: true,
     });

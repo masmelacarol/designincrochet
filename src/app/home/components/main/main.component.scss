@@ -14,12 +14,16 @@
 
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       justify-content: center;
       justify-items: center;
       align-items: center;
       padding: var(--pd);
+
+      @media (max-width: 425px) {
+        justify-items: flex-start;
+      }
     }
 
     &--container {
@@ -42,6 +46,10 @@
       p,
       .detail {
         margin: var(--mg) 0;
+
+        @media (max-width: 425px) {
+          margin: calc(var(--mg) / 2) 0;
+        }
       }
 
       .title {
