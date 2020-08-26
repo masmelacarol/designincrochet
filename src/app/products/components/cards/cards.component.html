@@ -20,7 +20,7 @@
   <button class="btn">Añadir al carrito</button>
 </div>
 <div class="card__container--image" [style.background]="color || 'transparent'">
-  <figure [style.width.px]="imageWidth">
+  <figure [style.width.px]="imageWidth" [ngClass]="{'cardView': imageWidth === 300}">
     <img [src]="product.images" [alt]="product.name">
   </figure>
 </div>

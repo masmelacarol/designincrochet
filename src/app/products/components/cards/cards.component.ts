@@ -9,7 +9,7 @@ export class CardsComponent implements OnInit {
   @Input() product;
   @Input() color;
   @Input() size = -1;
-  @Input() imageWidth = 200;
+  @Input() imageWidth = 300;
   @Input() position = 'flex-start';
 
   constructor() {
