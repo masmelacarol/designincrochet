@@ -2,13 +2,11 @@
   <div class="swiper-wrapper">
     <div *ngFor="let product of products" class=" swiper-slide">
       <div class=" carousel__content">
-        <app-cards [product]="product"></app-cards>
+        <app-product-card [product]="product"></app-product-card>
       </div>
-      <!-- If we need pagination -->
     </div>
   </div>
   <div class="swiper-pagination swiper-pagination"></div>
-  <!-- Add Arrows -->
   <div class="swiper-button-next swiper-button"></div>
   <div class="swiper-button-prev swiper-button"></div>
 </section>

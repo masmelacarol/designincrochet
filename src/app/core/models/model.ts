@@ -7,4 +7,5 @@ export interface Product {
   size: string[];
   images: string[];
   category: string;
+  theme?: string;
 }

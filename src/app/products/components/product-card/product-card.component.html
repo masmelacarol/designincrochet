@@ -1,0 +1,31 @@
+<section class="card" [ngClass]="product.theme">
+  <div class="card__container">
+    <div class="card__container--content">
+      <div class="card__container--description">
+        <h6>{{product.name}}</h6>
+        <strong [ngClass]="{'end': isCard}">{{product.price | currency}}</strong>
+        <p>{{product.description | slice:0:sliceSize }}</p>
+        <div class="detail">
+          <h6>Color: </h6>
+          <div *ngFor="let bg of product.color">
+            <span class="color" [style.background]="bg"></span>
+          </div>
+        </div>
+        <div class="detail">
+          <h6>Talla: </h6>
+          <div *ngFor="let sz of product.size">
+            <span>{{sz}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card__container--button">
+        <button class="btn">Añadir al carrito</button>
+      </div>
+    </div>
+    <div class="card__container--content image" [ngClass]="(isCard === true) ?'card-image': 'detail-image'">
+      <figure>
+        <img [src]=" product.images" [alt]="product.name">
+      </figure>
+    </div>
+  </div>
+</section>

@@ -16,16 +16,19 @@ export class ProductsService {
       size: ['M', 'L'],
       images: ['assets/images/dress_1.png'],
       category: 'swimsuit',
+      theme: 'yellow',
     },
     {
       id: '2',
       name: 'Gorro en crochet',
       price: 50000,
-      description: 'Gorro hecho a mano en crochet.',
+      description:
+        'Gorro de punto ligero para primavera, verano y otoño. Diseño único de tejido suelto para crear patrones de punto de ganchillo que añaden estilo instantáneo y transpirabilidad.',
       color: ['#EB2B16'],
       size: ['Unica'],
       images: ['assets/images/hat_1.png'],
       category: 'hat',
+      theme: 'pink',
     },
     {
       id: '3',
@@ -36,6 +39,7 @@ export class ProductsService {
       size: ['Unica'],
       images: ['assets/images/scarf_1.png'],
       category: 'scarf',
+      theme: 'pink',
     },
     {
       id: '4',
@@ -47,6 +51,7 @@ export class ProductsService {
       size: ['S'],
       images: ['assets/images/dress_2.png'],
       category: 'swimsuit',
+      theme: 'purple',
     },
     {
       id: '5',
@@ -58,6 +63,7 @@ export class ProductsService {
       size: ['S', 'M', 'L', 'XL'],
       images: ['assets/images/dress_4.png'],
       category: 'swimsuit',
+      theme: 'pink',
     },
     {
       id: '6',
@@ -68,6 +74,7 @@ export class ProductsService {
       size: ['3', '6'],
       images: ['assets/images/dress_3.png'],
       category: 'coat',
+      theme: 'blue',
     },
     {
       id: '7',
@@ -78,6 +85,7 @@ export class ProductsService {
       size: ['S', 'M'],
       images: ['assets/images/flowers_1.png'],
       category: 'flowers',
+      theme: 'purple',
     },
   ];
 
