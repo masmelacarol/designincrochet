@@ -1,4 +1,8 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 import { Product } from '../../models/model';
 
 @Injectable({
@@ -89,13 +93,22 @@ export class ProductsService {
     },
   ];
 
-  constructor() {}
-  getAllProducts(): Product[] {
-    return this.products;
+  constructor(private http: HttpClient) {}
+
+  getAllProducts(): Observable<any> {
+    return this.http.get(environment.url_api).pipe(
+      catchError(this.handleError),
+      map((response: any) => response.body)
+    );
   }
 
   getProductById(id): Product {
     const product = this.products.find((item) => item.id === id);
     return product;
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log('ProductsService -> handleError -> error', error);
+    return throwError('Salio algo mal');
   }
 }

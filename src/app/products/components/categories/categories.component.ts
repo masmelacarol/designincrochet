@@ -8,19 +8,30 @@ import { ProductsService } from 'src/app/core/services/products/products.service
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  products: Product[] = [];
+  products: Product[];
   categories: Array<string> = [];
   itemCategories: Object = {};
-  constructor(private productsService: ProductsService) {}
-
-  ngOnInit(): void {
-    this.products = this.productsService.getAllProducts();
-    this.getProductByCategory();
+  constructor(private productsService: ProductsService) {
+    this.fetchApi();
   }
 
-  getCategory(): Array<string> {
-    const category = this.products.map((item) => item.category);
-    return category;
+  ngOnInit(): void {}
+
+  fetchApi() {
+    this.productsService.getAllProducts().subscribe((product) => {
+      console.log('CategoriesComponent -> fetchApi -> product', product);
+      this.products = product;
+      this.getProductByCategory();
+    });
+  }
+
+  getCategory() {
+    if (this.products) {
+      const category = this.products.map((item) => item.category);
+      console.log('CategoriesComponent -> getCategory -> category', category);
+      return category;
+    }
+    console.log('this.products', this.products);
   }
 
   filterByCategory(category): Object {
@@ -30,6 +41,7 @@ export class CategoriesComponent implements OnInit {
         (element) => element.category === item
       );
     }
+    console.log(this.products);
     return filterCategories;
   }
 
