@@ -102,9 +102,11 @@ export class ProductsService {
     );
   }
 
-  getProductById(id): Product {
-    const product = this.products.find((item) => item.id === id);
-    return product;
+  getProductById(id): Observable<Product> {
+    return this.http.get<Product>(`${environment.url_api}/${id}`).pipe(
+      catchError(this.handleError),
+      map((response: any) => response.body)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

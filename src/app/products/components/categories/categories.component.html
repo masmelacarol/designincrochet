@@ -1,7 +1,7 @@
 <section *ngFor="let category of categories, index as i" class="categories">
   <h4>{{category | uppercase}}</h4>
   <div class="categories__content">
-    <a [routerLink]="['/products', item.id]" *ngFor="let item of itemCategories[category]">
+    <a [routerLink]="['/products', item._id]" *ngFor="let item of itemCategories[category]">
       <app-product-card [product]="item" [isCard]="true" [sliceSize]="70" class="categories__content--item">
       </app-product-card>
     </a>

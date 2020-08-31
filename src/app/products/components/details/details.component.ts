@@ -19,7 +19,10 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params.id;
-      this.product = this.productsService.getProductById(this.id);
+      this.productsService.getProductById(this.id).subscribe((product) => {
+        console.log('DetailsComponent -> ngOnInit -> product', product);
+        this.product = product;
+      });
     });
   }
 }
