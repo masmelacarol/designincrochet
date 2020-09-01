@@ -1,6 +1,8 @@
 .card {
   // padding: var(--pd);
   width: 100%;
+  background: none;
+  border: none;
 
   &.yellow {
     .btn {
@@ -87,7 +89,8 @@
       width: 100%;
 
       &.image {
-        justify-self: center;
+        display: flex;
+        justify-content: center;
 
         figure {
           img {
