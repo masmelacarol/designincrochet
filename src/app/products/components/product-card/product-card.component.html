@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="card__container--button">
-        <button class="btn">Añadir al carrito</button>
+        <button class="btn" (click)="addCart()">Añadir al carrito</button>
       </div>
     </div>
     <div class="card__container--content image" [ngClass]="(isCard === true) ?'card-image': 'detail-image'">

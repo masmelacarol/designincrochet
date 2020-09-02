@@ -19,7 +19,6 @@ export class CategoriesComponent implements OnInit {
 
   fetchApi() {
     this.productsService.getAllProducts().subscribe((product) => {
-      console.log('CategoriesComponent -> fetchApi -> product', product);
       this.products = product;
       this.getProductByCategory();
     });
@@ -28,10 +27,8 @@ export class CategoriesComponent implements OnInit {
   getCategory() {
     if (this.products) {
       const category = this.products.map((item) => item.category);
-      console.log('CategoriesComponent -> getCategory -> category', category);
       return category;
     }
-    console.log('this.products', this.products);
   }
 
   filterByCategory(category): Object {
@@ -41,7 +38,6 @@ export class CategoriesComponent implements OnInit {
         (element) => element.category === item
       );
     }
-    console.log(this.products);
     return filterCategories;
   }
 

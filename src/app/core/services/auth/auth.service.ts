@@ -40,14 +40,12 @@ export class AuthService {
       .pipe(
         tap((data: { body: string }) => {
           const token = data.body;
-          console.log('AuthService -> token', token);
           this.tokenService.saveToken(token);
         })
       );
   }
 
   logout() {
-    console.log('hola');
     return this.auth.signOut();
   }
 
@@ -56,7 +54,6 @@ export class AuthService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log('AuthService -> handleError -> error', error);
     return throwError('Salio algo mal');
   }
 }

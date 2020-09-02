@@ -20,14 +20,15 @@
     <div class="header__content">
       <nav class="header__content--nav login">
         <ul>
+          <li>
+            <a [routerLink]="['/cart']" routerLinkActive="active" mat-raised-button [matBadge]="total$ | async"
+              matBadgeColor="warn" matBadgeSize="small">
+              <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+            </a>
+          </li>
           <li *ngIf="login && !user">
             <a [routerLink]="['/auth/login']" routerLinkActive="active">
               Iniciar Sesión
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['/cart']" routerLinkActive="active">
-              <mat-icon class="icon" aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
             </a>
           </li>
           <li *ngIf="user">

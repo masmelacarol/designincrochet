@@ -8,6 +8,7 @@ export interface Product {
   images: string[];
   category: string;
   theme?: string;
+  count?: number;
 }
 
 export interface User {

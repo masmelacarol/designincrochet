@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
+import { CartService } from '@core/services/cart/cart.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +13,16 @@ import { AuthService } from '@core/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   user = false;
   login;
+  total$: Observable<number>;
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private cartService: CartService,
+    private router: Router
+  ) {
+    this.total$ = this.cartService.cart$.pipe(
+      map((cartProducts) => cartProducts.length)
+    );
+  }
 
   ngOnInit(): void {
     this.login = this.router.url === '/auth/login' ? false : true;

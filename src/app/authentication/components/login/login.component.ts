@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   login(event: Event) {
     event.preventDefault();
-    console.log('hola');
   }
 
   loginAPI(event: Event) {
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
       const value = this.form.value;
       this.authService
         .generateToken(value.email, value.password)
-        .subscribe((data) => console.log(data));
+        .subscribe((data) => console.log(''));
       this.authService.login().then(() => {
         this.router.navigate(['/']).catch((error) => {
           alert('no es valido');
