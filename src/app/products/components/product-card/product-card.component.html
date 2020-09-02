@@ -1,4 +1,4 @@
-<section class="card" [ngClass]="product.theme">
+<section class="card" *ngIf="product" [ngClass]="product.theme">
   <div class="card__container">
     <div class="card__container--content">
       <div class="card__container--description">
@@ -14,11 +14,16 @@
         <div class="detail">
           <h6>Talla: </h6>
           <div *ngFor="let sz of product.size">
-            <span>{{sz}}</span>
+            <span *ngIf="isCard">{{sz}}</span>
           </div>
+          <form *ngIf="!isCard">
+            <select name="" id="">
+              <option *ngFor="let sz of product.size">{{sz}}</option>
+            </select>
+          </form>
         </div>
       </div>
-      <div class="card__container--button">
+      <div class="card__container--button" *ngIf="!isCard">
         <button class="btn" (click)="addCart()">Añadir al carrito</button>
       </div>
     </div>
