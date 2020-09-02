@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MaterialDesignModule } from '../material-design/material-design.module';
+import { MaterialDesignModule } from '@material-design/material-design.module';
 import { ProductsModule } from '../products/products.module';
 import { HomeComponent } from './components/home/home.component';
 import { MainComponent } from './components/main/main.component';

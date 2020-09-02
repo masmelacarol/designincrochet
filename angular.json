@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@firebase/app",
+              "firebase/app",
+              "@firebase/auth"
+            ],
             "outputPath": "dist/ecommerce-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -45,6 +50,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

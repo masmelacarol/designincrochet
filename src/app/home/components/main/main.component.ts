@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/core/models/model';
+import { Product } from '@core/models/model';
+import { ProductsService } from '@core/services/products/products.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
-import { ProductsService } from '../../../core/services/products/products.service';
 
 Swiper.use([Navigation, Pagination]);
 @Component({
