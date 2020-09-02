@@ -20,7 +20,7 @@
     <div class="header__content">
       <nav class="header__content--nav login">
         <ul>
-          <li>
+          <li *ngIf="login && !user">
             <a [routerLink]="['/auth/login']" routerLinkActive="active">
               Iniciar Sesión
             </a>
@@ -29,6 +29,9 @@
             <a [routerLink]="['/cart']" routerLinkActive="active">
               <mat-icon class="icon" aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
             </a>
+          </li>
+          <li *ngIf="user">
+            <a mat-list-item (click)="logOut()">Logout</a>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '@environments/environment';
 import { Observable, throwError } from 'rxjs';
@@ -13,7 +13,8 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private ngZone: NgZone
   ) {}
 
   createUser(user): Observable<any> {
@@ -24,6 +25,10 @@ export class AuthService {
 
   login() {
     return this.auth.signInWithCustomToken(this.tokenService.getToken());
+  }
+
+  isUser() {
+    return this.auth.user;
   }
 
   generateToken(email: string, password: string) {
@@ -42,6 +47,7 @@ export class AuthService {
   }
 
   logout() {
+    console.log('hola');
     return this.auth.signOut();
   }
 
