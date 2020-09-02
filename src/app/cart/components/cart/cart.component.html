@@ -1,4 +1,4 @@
-<section class="cart">
+<section class="cart" *ngIf="(products$ | async) as products">
   <div class="cart__container">
     <div class="cart__container--title">
       <figure>
@@ -7,7 +7,8 @@
       <h4>Mi Carrito</h4>
     </div>
     <div class="cart__container--content">
-      <table>
+      <p *ngIf="products.length === 0"> No tiene ningun producto en el carrito</p>
+      <table *ngIf="products.length > 0">
         <thead>
           <tr>
             <th></th>
@@ -19,18 +20,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngFor="let product of products | count">
             <td>
               <figure>
-                <img src="assets/images/dress_1.png" alt="">
+                <img [src]="product.images[0]" [alt]="product.name">
               </figure>
             </td>
-            <td>Vestido de baño en crochet</td>
-            <td>M</td>
-            <td>{{ 90000 | currency}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.size[0]}}</td>
+            <td>{{product.price | currency}}</td>
             <td>
-              <form>
-                <input type="number" placeholder="1" min="1">
+              <form [formGroup]="form">
+                <input type="number" formControlName="count" [value]="product.count" placeholder="1" min="1">
               </form>
             </td>
             <td>{{ 90000 | currency}}</td>

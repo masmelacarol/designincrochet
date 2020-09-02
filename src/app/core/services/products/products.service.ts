@@ -110,7 +110,6 @@ export class ProductsService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log('ProductsService -> handleError -> error', error);
     return throwError('Salio algo mal');
   }
 }
