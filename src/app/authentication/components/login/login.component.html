@@ -1,0 +1,39 @@
+<app-header login=true></app-header>
+<section class="login">
+  <h4>Inicia sesión</h4>
+  <section class="login__container">
+    <form [formGroup]="form" (ngSubmit)="login($event)">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input placeholder="example@example.com" formControlName="email" matInput type="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input placeholder="*********" formControlName="password" matInput type="password">
+      </mat-form-field>
+      <div>
+        <button class="btn" [disabled]="form.invalid" mat-raised-button type="submit">Ingresar</button>
+      </div>
+    </form>
+    <div class="forget">
+      <button type="button">Olvidaste tu contraseña</button>
+    </div>
+    <div class="social_media">
+      <p>INGRESA CON:</p>
+      <nav>
+        <ul>
+          <li><img class="icon" src="assets/images/icon-facebook.svg" alt="icon-facebook"></li>
+          <li><img class="icon" src="assets/images/icon-google.svg" alt="icon-google"></li>
+          <li><img class="icon" src="assets/images/icon-twitter.svg" alt="icon-twitter"></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="remember">
+      <p>Si no tienes una cuenta, puedes registrate
+        <a class="register" [routerLink]="['/auth/register']" routerLinkActive="active">aquí</a>
+      </p>
+    </div>
+  </section>
+
+</section>
+<app-footer></app-footer>

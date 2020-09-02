@@ -1,0 +1,59 @@
+.login {
+  background: var(--bg-white);
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+
+  h4 {
+    padding: var(--pd);
+    margin: 0 20%;
+  }
+
+  &__container {
+    background: var(--bg-main);
+    padding: 2rem;
+    margin: 0 25%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    text-align: center;
+
+    form {
+      display: grid;
+
+      mat-form-field {
+        width: 90%;
+        margin: auto;
+      }
+    }
+
+    button {
+      margin: 10px;
+    }
+  }
+
+  .forget {
+    button {
+      text-decoration: underline;
+    }
+  }
+
+  .social_media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    nav {
+      ul li {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .remember {
+    a {
+      font-weight: 700;
+    }
+  }
+}
