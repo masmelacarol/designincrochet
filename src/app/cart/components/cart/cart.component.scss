@@ -1,0 +1,91 @@
+.cart {
+  background: var(--bg-white);
+
+  &__container {
+    padding: var(--pd);
+
+    figure {
+      width: 50px;
+      margin-right: 10px;
+    }
+
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+
+    &--content {
+      padding: var(--pd);
+      text-align: center;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td,
+        th {
+          padding: var(--pd);
+        }
+
+
+        thead {
+          background-color: rgba(255, 217, 3, 0.2);
+
+          th {
+            &:first-child {
+              border-top-left-radius: 20px;
+            }
+
+            &:last-child {
+              border-top-right-radius: 20px;
+            }
+          }
+        }
+
+        tbody {
+          border-bottom: 0.5px solid #C4C4C4;
+
+          td {
+            border-left: 0.5px solid #C4C4C4;
+
+            &:last-child {
+              border-right: 0.5px solid #C4C4C4;
+            }
+          }
+        }
+
+        form {
+
+          input {
+            border: none;
+            text-align: center;
+            background: #E3F6F5;
+            width: 94px;
+            padding: 10px;
+            position: relative;
+            outline: none;
+            appearance: none;
+            border-radius: 5px;
+            color: var(--color);
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+              opacity: 1;
+              position: absolute;
+              width: 50px;
+              top: 0;
+              right: 0px;
+              height: 100%;
+            }
+
+
+          }
+        }
+
+        figure {
+          margin: auto;
+        }
+      }
+    }
+  }
+}

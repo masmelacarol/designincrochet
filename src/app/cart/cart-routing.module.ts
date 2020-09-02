@@ -4,7 +4,7 @@ import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: CartComponent,
   },
 ];

@@ -1,1 +1,42 @@
-<p>cart works!</p>
+<section class="cart">
+  <div class="cart__container">
+    <div class="cart__container--title">
+      <figure>
+        <img src="assets/images/icon-cart.svg" alt="icon-cart">
+      </figure>
+      <h4>Mi Carrito</h4>
+    </div>
+    <div class="cart__container--content">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Producto</th>
+            <th>Talla</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <figure>
+                <img src="assets/images/dress_1.png" alt="">
+              </figure>
+            </td>
+            <td>Vestido de baño en crochet</td>
+            <td>M</td>
+            <td>{{ 90000 | currency}}</td>
+            <td>
+              <form>
+                <input type="number" placeholder="1" min="1">
+              </form>
+            </td>
+            <td>{{ 90000 | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
