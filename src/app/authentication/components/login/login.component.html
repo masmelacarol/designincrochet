@@ -2,7 +2,7 @@
 <section class="login">
   <h4>Inicia sesión</h4>
   <section class="login__container">
-    <form [formGroup]="form" (ngSubmit)="login($event)">
+    <form [formGroup]="form" (ngSubmit)="loginAPI($event)">
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input placeholder="example@example.com" formControlName="email" matInput type="email">

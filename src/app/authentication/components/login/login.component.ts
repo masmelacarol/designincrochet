@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.buildForm();
   }
 
@@ -17,6 +23,21 @@ export class LoginComponent implements OnInit {
   login(event: Event) {
     event.preventDefault();
     console.log('hola');
+  }
+
+  loginAPI(event: Event) {
+    event.preventDefault();
+    if (this.form.valid) {
+      const value = this.form.value;
+      this.authService
+        .generateToken(value.email, value.password)
+        .subscribe((data) => console.log(data));
+      this.authService.login().then(() => {
+        this.router.navigate(['/']).catch((error) => {
+          alert('no es valido');
+        });
+      });
+    }
   }
 
   private buildForm() {

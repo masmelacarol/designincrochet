@@ -11,7 +11,7 @@ export interface Product {
 }
 
 export interface User {
-  username: string;
+  displayName: string;
   email: string;
   password: string;
 }

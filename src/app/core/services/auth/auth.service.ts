@@ -2,25 +2,51 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { User } from '../../models/model';
+import { TokenService } from '../token/token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private authAngular: AngularFireAuth, private http: HttpClient) {}
+  constructor(
+    private auth: AngularFireAuth,
+    private http: HttpClient,
+    private tokenService: TokenService
+  ) {}
 
-  createUser(username, email, password): Observable<any> {
-    const user: User = {
-      username,
-      email,
-      password,
-    };
+  createUser(user): Observable<any> {
     return this.http
       .post(`${environment.url_api}/users`, user)
       .pipe(catchError(this.handleError));
+  }
+
+  login() {
+    return this.auth.signInWithCustomToken(this.tokenService.getToken());
+  }
+
+  generateToken(email: string, password: string) {
+    return this.http
+      .post(`${environment.url_api}/users/auth`, {
+        email,
+        password,
+      })
+      .pipe(
+        tap((data: { body: string }) => {
+          const token = data.body;
+          console.log('AuthService -> token', token);
+          this.tokenService.saveToken(token);
+        })
+      );
+  }
+
+  logout() {
+    return this.auth.signOut();
+  }
+
+  hasUser() {
+    return this.auth.authState;
   }
 
   private handleError(error: HttpErrorResponse) {
