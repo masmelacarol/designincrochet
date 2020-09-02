@@ -21,6 +21,7 @@
       "@material-design/*": ["src/app/material-design/*"],
       "@shared/*": ["src/app/shared/*"],
       "@environments/*": ["src/environments/*"],
+      "@utils/*": ["src/app/utils/*"]
     }
   }
 }
