@@ -1,1 +1,29 @@
-<p>register works!</p>
+<app-header login=true></app-header>
+<section class="register">
+  <h4>Registrate</h4>
+  <section class="register__container">
+    <form [formGroup]="form" (ngSubmit)="register($event)">
+      <mat-form-field>
+        <mat-label>Nombre Completo</mat-label>
+        <input placeholder="Nombre" formControlName="name" matInput type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input placeholder="example@example.com" formControlName="email" matInput type="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input placeholder="*********" formControlName="password" matInput type="password">
+      </mat-form-field>
+      <div>
+        <button class="btn" [disabled]="form.invalid" mat-raised-button type="submit">Registrate</button>
+      </div>
+    </form>
+    <div class="link">
+      <p>Si ya tienes una cuenta, puedes ingresar <a [routerLink]="['/auth/login']" routerLinkActive="active">aquí</a>
+      </p>
+    </div>
+  </section>
+
+</section>
+<app-footer></app-footer>
