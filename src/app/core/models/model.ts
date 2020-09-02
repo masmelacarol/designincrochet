@@ -9,3 +9,9 @@ export interface Product {
   category: string;
   theme?: string;
 }
+
+export interface User {
+  username: string;
+  email: string;
+  password: string;
+}

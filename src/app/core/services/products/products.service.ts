@@ -96,14 +96,14 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<any> {
-    return this.http.get(environment.url_api).pipe(
+    return this.http.get(`${environment.url_api}/products`).pipe(
       catchError(this.handleError),
       map((response: any) => response.body)
     );
   }
 
   getProductById(id): Observable<Product> {
-    return this.http.get<Product>(`${environment.url_api}/${id}`).pipe(
+    return this.http.get<Product>(`${environment.url_api}/products/${id}`).pipe(
       catchError(this.handleError),
       map((response: any) => response.body)
     );
