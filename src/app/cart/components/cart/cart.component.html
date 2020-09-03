@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products | count">
+          <tr *ngFor="let product of products; i as index">
             <td>
               <figure>
                 <img [src]="product.images[0]" [alt]="product.name">
@@ -30,14 +30,76 @@
             <td>{{product.size[0]}}</td>
             <td>{{product.price | currency}}</td>
             <td>
-              <form [formGroup]="form">
-                <input type="number" formControlName="count" [value]="product.count" placeholder="1" min="1">
-              </form>
+              <div class="count">
+                <p>{{product.count}}</p>
+                <div class="cart__btns">
+                  <button class="add" (click)="deleteCart(product)">^</button>
+                  <button class="delete" (click)="addCart(product)">^</button>
+                </div>
+              </div>
             </td>
-            <td>{{ 90000 | currency}}</td>
+            <td>{{ product.price * product.count | currency}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <section class="infoPayment">
+    <div class="infoPayment__container">
+      <!-- *ngIf="products.length > 0" -->
+      <div class="infoPayment__container--content form">
+        <h4>Datos de envio</h4>
+        <form [formGroup]="form">
+          <mat-form-field>
+            <mat-label>Nombre:</mat-label>
+            <input type="text" formControlName="name" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input type="email" formControlName="email" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Dirección:</mat-label>
+            <input type="text" formControlName="address" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ciudad:</mat-label>
+            <input type="text" formControlName="city" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Telefono:</mat-label>
+            <input type="tel" formControlName="phoneNumber" matInput>
+          </mat-form-field>
+          <div class="btn-send">
+            <button class="btn" [disabled]="form.invalid" mat-raised-button type="submit">Actualizar</button>
+          </div>
+        </form>
+      </div>
+      <div class="infoPayment__container--content">
+        <h4>Total Carrito: </h4>
+        <div class="payment">
+          <div class="box">
+            <h6>Subtotal</h6>
+            <p>{{10000}}</p>
+          </div>
+          <div class="box">
+            <h6>Envio</h6>
+            <p>{{10000 | currency}}</p>
+          </div>
+          <div class="box">
+            <h6>Total</h6>
+            <p>{{10000 + 10000}}</p>
+          </div>
+        </div>
+        <div class="whatsapp-contact">
+          <a target="_blank" href="https://api.whatsapp.com/send?phone=573102318207">
+            <figure>
+              <img src="assets/images/icon-whatsapp.svg" alt="icon-whatsapp">
+            </figure>
+            <span>Contactar para realizar el pago</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>

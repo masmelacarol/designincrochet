@@ -13,7 +13,26 @@ export class CartService {
   constructor() {}
 
   addCart(product: Product): void {
-    this.products = [...this.products, product];
+    const itExist = this.products.find((item) => {
+      return item['_id'] === product['_id'];
+    });
+    if (!itExist) {
+      this.products.push({ ...product, count: 1 });
+    } else {
+      itExist.count += 1;
+    }
+    this.cart.next(this.products);
+  }
+
+  deleteCart(product: Product): void {
+    const itExist = this.products.find((item) => {
+      return item['_id'] === product['_id'];
+    });
+    if (itExist.count === 0) {
+      console.log('hola');
+    } else {
+      itExist.count -= 1;
+    }
     this.cart.next(this.products);
   }
 }

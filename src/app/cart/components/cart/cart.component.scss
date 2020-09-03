@@ -47,6 +47,47 @@
 
           td {
             border-left: 0.5px solid #C4C4C4;
+            max-width: 0px;
+
+            .count {
+              background: #E3F6F5;
+              border-radius: 10px;
+              height: 40px;
+              display: grid;
+              grid-template-columns: 65% 35%;
+              align-items: center;
+              justify-content: center;
+              width: 50%;
+              margin: auto;
+
+
+
+              p {
+                text-align: center;
+                padding: 0 10px;
+              }
+
+              .cart__btns {
+                display: flex;
+                flex-direction: column;
+                background: rgba(142, 245, 240, 0.6);
+                border-radius: 0px 10px 10px 0px;
+                align-items: center;
+
+                button {
+                  color: white;
+                  padding: 0;
+
+                }
+
+
+
+                .delete {
+                  transform: rotate(180deg);
+                  padding: 0;
+                }
+              }
+            }
 
             &:last-child {
               border-right: 0.5px solid #C4C4C4;
@@ -54,36 +95,75 @@
           }
         }
 
-        form {
 
-          input {
-            border: none;
-            text-align: center;
-            background: #E3F6F5;
-            width: 94px;
-            padding: 10px;
-            position: relative;
-            outline: none;
-            appearance: none;
-            border-radius: 5px;
-            color: var(--color);
-
-            &::-webkit-inner-spin-button,
-            &::-webkit-outer-spin-button {
-              opacity: 1;
-              position: absolute;
-              width: 50px;
-              top: 0;
-              right: 0px;
-              height: 100%;
-            }
-
-
-          }
-        }
 
         figure {
           margin: auto;
+        }
+      }
+    }
+  }
+
+  .infoPayment {
+    padding-bottom: 10px;
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+      &--content {
+        padding: var(--pd);
+
+        &.form {
+          background: var(--bg-main);
+
+          form {
+            display: grid;
+
+            mat-form-field {
+              width: 70%;
+              margin: auto;
+            }
+
+            .btn-send {
+              display: flex;
+              justify-content: center;
+            }
+          }
+        }
+
+
+        .payment {
+          padding: var(--pd);
+
+          .box {
+            display: grid;
+            grid-template-columns: 20% 70%;
+            gap: 20px;
+            align-items: center;
+
+            p {
+              text-align: left;
+              width: 100%;
+              padding: 10px 20px;
+              margin: 10px 0;
+              background-color: var(--bg-main);
+              border-radius: 5px;
+            }
+          }
+        }
+
+        .whatsapp-contact {
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            figure {
+              width: 40px;
+              margin-right: 10px;
+            }
+          }
         }
       }
     }

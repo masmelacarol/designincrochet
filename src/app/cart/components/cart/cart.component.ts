@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Product } from '@core/models/model';
+import { AuthService } from '@core/services/auth/auth.service';
 import { CartService } from '@core/services/cart/cart.service';
 import { Observable } from 'rxjs';
 
@@ -12,27 +18,45 @@ import { Observable } from 'rxjs';
 export class CartComponent implements OnInit {
   products$: Observable<Product[]>;
   form: FormGroup;
+  count: FormControl;
+  user: {
+    name;
+    email;
+  };
 
   constructor(
     private cartService: CartService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
-    this.buildForm();
     this.products$ = this.cartService.cart$;
+    this.buildForm();
+
+    this.authService.isUser().subscribe((userInfo) => {
+      this.user = {
+        name: userInfo.displayName,
+        email: userInfo.email,
+      };
+    });
   }
 
-  ngOnInit(): void {
-    // this.getTotal();
+  ngOnInit(): void {}
+
+  addCart(product) {
+    this.cartService.addCart(product);
   }
 
-  // getTotal() {
-  //   let count = this.form.get('count');
-  //   console.log('CartComponent -> getTotal -> count', count);
-  // }
+  deleteCart(product) {
+    this.cartService.deleteCart(product);
+  }
 
-  private buildForm(): void {
+  private buildForm() {
     this.form = this.formBuilder.group({
-      count: [1, [Validators.required]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      phoneNumber: ['', Validators.required],
     });
   }
 }
