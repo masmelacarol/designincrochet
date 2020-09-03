@@ -167,14 +167,12 @@
           }
         }
 
-        form {
-          select {
-            padding: 10px;
-            background: var(--bg-main);
-            margin-left: 10px;
-            border: none;
-            border-radius: 5px;
-          }
+        select {
+          padding: 10px;
+          background: var(--bg-main);
+          margin-left: 10px;
+          border: none;
+          border-radius: 5px;
         }
       }
     }

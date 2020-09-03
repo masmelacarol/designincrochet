@@ -16,11 +16,9 @@
           <div *ngFor="let sz of product.size">
             <span *ngIf="isCard">{{sz}}</span>
           </div>
-          <form *ngIf="!isCard" [formGroup]="form">
-            <select formControlName="size" (change)="getSize($event)">
-              <option *ngFor="let sz of product.size" [value]="sz">{{sz}}</option>
-            </select>
-          </form>
+          <select *ngIf="!isCard" [formControl]="size">
+            <option *ngFor="let sz of product.size" [value]="sz">{{sz}}</option>
+          </select>
         </div>
       </div>
       <div class="card__container--button" *ngIf="!isCard">

@@ -27,8 +27,7 @@ export class AuthService {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  isUser() {
-    console.log('tests', this.auth.tenantId);
+  isUser(): Observable<firebase.User> {
     return this.auth.user;
   }
 
