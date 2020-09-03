@@ -30,7 +30,8 @@ export class RegisterComponent implements OnInit {
         email: value.email,
         password: value.password,
       };
-      this.authService.createUser(userForm).subscribe(() => {
+      this.authService.createUser(userForm).subscribe((user) => {
+        this.authService.setId(user.body.id);
         this.router.navigate(['/auth/login']);
       });
     }
@@ -39,8 +40,8 @@ export class RegisterComponent implements OnInit {
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 }
