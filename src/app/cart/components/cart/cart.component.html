@@ -20,14 +20,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products; i as index">
+          <tr *ngFor="let product of products; index as i">
             <td>
               <figure>
                 <img [src]="product.images[0]" [alt]="product.name">
               </figure>
             </td>
             <td>{{product.name}}</td>
-            <td>{{product.size[0]}}</td>
+            <td>{{product.size}}</td>
             <td>{{product.price | currency}}</td>
             <td>
               <div class="count">

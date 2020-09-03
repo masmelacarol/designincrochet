@@ -20,8 +20,8 @@ export class CartComponent implements OnInit {
   form: FormGroup;
   count: FormControl;
   user: {
-    name;
-    email;
+    name: string;
+    email: string;
   };
 
   constructor(
@@ -42,15 +42,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addCart(product) {
+  addCart(product): void {
     this.cartService.addCart(product);
   }
 
-  deleteCart(product) {
+  deleteCart(product): void {
     this.cartService.deleteCart(product);
   }
 
-  private buildForm() {
+  private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
