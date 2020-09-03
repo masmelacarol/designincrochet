@@ -23,8 +23,8 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  login() {
-    return this.auth.signInWithCustomToken(this.tokenService.getToken());
+  login(email: string, password: string) {
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   isUser() {
