@@ -2,34 +2,47 @@
   <div class="comments__container">
     <div class="comments__content">
       <h4>Opiniones de clientes</h4>
-      <div class="start-rating"></div>
-      <form>
+      <div class="start-rating">
+        <star-rating [starType]="'svg'" ngDefaultControl (ratingChange)="onRatingChange($event)" [formControl]="rating"
+          labelPosition="top">
+        </star-rating>
+        <p>{{score}} / 5</p>
+        <p>{{score}} opiniones</p>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="addComment($event)">
         <fieldset>
           <legend>Escribenos una opinión:</legend>
-          <textarea name="" id="" cols="60" rows="5"></textarea>
+          <textarea name="" id="" cols="60" rows="5" placeholder="Escribe tu comentario"
+            formControlName="comment"></textarea>
         </fieldset>
         <button type="submit" class="btn">Enviar</button>
       </form>
     </div>
-    <div class="comments__content">
-      <div class="comments__content--card">
+    <div class="comments__content reviews">
+      <div class="no-content" *ngIf="!true">
+        <figure>
+          <img ngxGravatar [email]="'no-gravatar@gravatar.com'" [fallback]="fallbacks[3]" alt="user-avatar" />
+        </figure>
+        <p>No hay comentarios sobre este producto.</p>
+      </div>
+      <div class="comments__content--card" *ngIf="true">
         <div class="item">
           <figure class="avatar">
-            <img
-              ngxGravatar
-              [email]="'example@mail.com'"
-              size="30"
-              src="assets/images/icon-avatar.png"
-              alt="user-avatar"
-            />
+            <img ngxGravatar [email]="''" [fallback]="fallbacks[0]" alt="user-avatar" />
           </figure>
-          <h6>user</h6>
+          <h6>{{ email || "user" }}</h6>
         </div>
         <div class="item">
-          <div class="start-rating"></div>
-          <h6>title</h6>
+          <div class="">
+            <star-rating [starType]="'svg'" [rating]="2.63" [readOnly]="true"></star-rating>
+          </div>
         </div>
-        <p>comments</p>
+        <div class="description__comment">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae officiis facere iusto! Sit officiis,
+            voluptatem aspernatur dicta beatae reiciendis debitis sint tempore! Unde commodi, quidem ut illum possimus
+            maxime architecto.</p>
+
+        </div>
       </div>
     </div>
   </div>

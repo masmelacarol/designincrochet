@@ -1,7 +1,9 @@
 .comments {
-  margin-top: 20px;
-  padding: var(--pd);
-  background-color: #E3F6F5;
+  background: rgba(227, 246, 245, 0.6);
+  margin: 20px 0;
+  // padding: var(--pd);
+  box-shadow: 4px 4px 6px rgba(39, 35, 67, 0.25);
+  border-radius: 0px 0px 20px 0px;
 
   &__container {
     display: grid;
@@ -12,13 +14,24 @@
   }
 
   &__content {
-    padding: var(--pd);
+    padding: calc(var(--pd) * 2);
     height: 100%;
     display: flex;
     flex-direction: column;
     align-content: space-between;
 
+    &.reviews {
+      background: #E3F6F5;
+      border-radius: 0px 0px 20px 0px;
+    }
+
     &--card {
+      padding: var(--pd);
+      background: var(--bg-white);
+      border-radius: 20px;
+      width: 80%;
+      margin: 10px auto;
+
       .item {
         display: flex;
         align-items: center;
@@ -26,6 +39,20 @@
         h6 {
           margin-left: 10px;
         }
+      }
+
+      .description__comment {
+        margin-left: 2rem;
+      }
+    }
+
+    .start-rating {
+      display: inline-flex;
+      margin-top: 10px;
+      align-items: center;
+
+      p {
+        margin-left: 10px;
       }
     }
 
@@ -38,6 +65,10 @@
       fieldset,
       legend {
         border: none;
+      }
+
+      textarea {
+        padding: var(--pd);
       }
     }
   }
