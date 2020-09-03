@@ -30,8 +30,7 @@ export class RegisterComponent implements OnInit {
         email: value.email,
         password: value.password,
       };
-      this.authService.createUser(userForm).subscribe((user) => {
-        this.authService.setId(user.body.id);
+      this.authService.createUser(userForm).subscribe(() => {
         this.router.navigate(['/auth/login']);
       });
     }
