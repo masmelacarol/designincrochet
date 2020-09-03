@@ -7,7 +7,10 @@
       <h4>Mi Carrito</h4>
     </div>
     <div class="cart__container--content">
-      <p *ngIf="products.length === 0"> No tiene ningun producto en el carrito</p>
+      <div class="no-content" *ngIf="products.length === 0">
+        <p> No tiene ningun producto en el carrito</p>
+        <a [routerLink]="['/']" class="home__btn">Ir al inicio</a>
+      </div>
       <table *ngIf="products.length > 0">
         <thead>
           <tr>
@@ -33,8 +36,8 @@
               <div class="count">
                 <p>{{product.count}}</p>
                 <div class="cart__btns">
-                  <button class="add" (click)="deleteCart(product)">^</button>
                   <button class="delete" (click)="addCart(product)">^</button>
+                  <button class="add" (click)="deleteCart(product)">^</button>
                 </div>
               </div>
             </td>
@@ -42,17 +45,13 @@
           </tr>
         </tbody>
       </table>
-      <div class="button__update" *ngIf="products.length > 0">
-        <button class="btn" (click)="getCartTotal()">Actualizar</button>
-      </div>
     </div>
   </div>
-  <section class="infoPayment">
+  <section class="infoPayment" *ngIf="products.length > 0">
     <div class="infoPayment__container">
-      <!-- *ngIf="products.length > 0" -->
       <div class="infoPayment__container--content form">
         <h4>Datos de envio</h4>
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="getUserForSend($event)">
           <mat-form-field>
             <mat-label>Nombre:</mat-label>
             <input type="text" formControlName="name" matInput>
@@ -83,15 +82,15 @@
         <div class="payment">
           <div class="box">
             <h6>Subtotal</h6>
-            <p>{{10000}}</p>
+            <p>{{total | currency}}</p>
           </div>
           <div class="box">
             <h6>Envio</h6>
-            <p>{{10000 | currency}}</p>
+            <p>{{shipment | currency}}</p>
           </div>
           <div class="box">
             <h6>Total</h6>
-            <p>{{10000 + 10000}}</p>
+            <p>{{total + shipment | currency}}</p>
           </div>
         </div>
         <div class="whatsapp-contact">

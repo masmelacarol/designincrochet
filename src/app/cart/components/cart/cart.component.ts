@@ -8,6 +8,7 @@ import {
 import { Product } from '@core/models/model';
 import { AuthService } from '@core/services/auth/auth.service';
 import { CartService } from '@core/services/cart/cart.service';
+import { User } from 'firebase';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -19,10 +20,9 @@ export class CartComponent implements OnInit {
   products$: Observable<Product[]>;
   form: FormGroup;
   count: FormControl;
-  user: {
-    name: string;
-    email: string;
-  };
+  user: Partial<User>;
+  total = 0;
+  shipment = 10000;
 
   constructor(
     private cartService: CartService,
@@ -30,14 +30,19 @@ export class CartComponent implements OnInit {
     private authService: AuthService
   ) {
     this.products$ = this.cartService.cart$;
-    this.buildForm();
 
-    this.authService.isUser().subscribe((userInfo) => {
+    this.authService.isUser().subscribe((userInfo: User) => {
       this.user = {
-        name: userInfo.displayName,
+        displayName: userInfo.displayName,
         email: userInfo.email,
       };
     });
+    this.products$.subscribe((product) => {
+      this.total = product
+        .map((item) => item.price * item.count)
+        .reduce((value, count) => count + value, 0);
+    });
+    this.buildForm();
   }
 
   ngOnInit(): void {}
@@ -50,7 +55,17 @@ export class CartComponent implements OnInit {
     this.cartService.deleteCart(product);
   }
 
-  getCartTotal() {}
+  getUserForSend(event: Event): void {
+    event.preventDefault();
+    if (this.form.valid) {
+      const value = this.form.value;
+      this.user = {
+        ...value,
+      };
+
+      console.log('this.user', this.user);
+    }
+  }
 
   private buildForm(): void {
     this.form = this.formBuilder.group({

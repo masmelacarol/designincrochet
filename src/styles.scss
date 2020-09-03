@@ -92,7 +92,8 @@ img {
   display: none;
 }
 
-button {
+button,
+.home__btn {
   font-family: var(--font-main);
   padding: 10px var(--pd);
   color: var(--color);
@@ -105,7 +106,8 @@ button {
   transition: all 0.5s;
 }
 
-.btn {
+.btn,
+.home__btn {
   background: var(--bg-color-secondary);
   border-radius: 10px;
   text-transform: uppercase;

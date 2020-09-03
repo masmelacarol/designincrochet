@@ -15,4 +15,7 @@ export interface User {
   displayName: string;
   email: string;
   password: string;
+  address?: string;
+  city?: string;
+  phoneNumber?: string;
 }

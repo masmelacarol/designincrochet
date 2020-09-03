@@ -28,8 +28,11 @@ export class CartService {
     const itExist = this.products.find((item) => {
       return item['_id'] === product['_id'] && item.size === product.size;
     });
-    if (itExist.count === 0) {
-      console.log('hola');
+    if (itExist.count <= 1) {
+      const productDelete = this.products.findIndex(
+        (item) => item['_id'] === product['_id'] && item.size === product.size
+      );
+      this.products.splice(productDelete, 1);
     } else {
       itExist.count -= 1;
     }

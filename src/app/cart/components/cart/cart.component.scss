@@ -1,5 +1,6 @@
 .cart {
   background: var(--bg-white);
+  min-height: 70vh;
 
   &__container {
     padding: var(--pd);
@@ -17,6 +18,17 @@
     &--content {
       padding: var(--pd);
       text-align: center;
+
+      .no-content {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin: auto;
+
+        .home__btn {
+          margin-top: 10px;
+        }
+      }
 
       table {
         width: 100%;
@@ -77,12 +89,9 @@
                 button {
                   color: white;
                   padding: 0;
-
                 }
 
-
-
-                .delete {
+                .add {
                   transform: rotate(180deg);
                   padding: 0;
                 }
@@ -101,6 +110,7 @@
           margin: auto;
         }
       }
+
     }
   }
 
