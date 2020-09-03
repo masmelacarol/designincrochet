@@ -24,12 +24,15 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
   }
 
-  loginAPI(event: Event) {
+  loginAPI(event: Event): void {
     event.preventDefault();
     if (this.form.valid) {
-      const id = this.authService.getId();
-      this.authService.generateToken(id).subscribe((data) => console.log(''));
-      this.authService.login().then(() => {
+      const value = this.form.value;
+      this.authService.login(value.email, value.password).then((user) => {
+        const {
+          user: { uid },
+        } = user;
+        this.authService.generateToken(uid).subscribe(() => console.log(''));
         this.router.navigate(['/']).catch((error) => {
           alert('no es valido');
         });
@@ -37,7 +40,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private buildForm() {
+  private buildForm(): void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
