@@ -20,10 +20,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login(event: Event) {
-    event.preventDefault();
-  }
-
   loginAPI(event: Event): void {
     event.preventDefault();
     if (this.form.valid) {

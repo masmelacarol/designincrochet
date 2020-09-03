@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialDesignModule } from '@material-design/material-design.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { DetailsComponent } from './components/details/details.component';
@@ -19,6 +20,7 @@ import { ProductsRoutingModule } from './products.routing.module';
     ProductsRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    MaterialDesignModule,
   ],
   exports: [ProductCardComponent],
 })

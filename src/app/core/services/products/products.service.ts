@@ -109,7 +109,7 @@ export class ProductsService {
     );
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     return throwError('Salio algo mal');
   }
 }

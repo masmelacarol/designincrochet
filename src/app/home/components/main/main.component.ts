@@ -18,7 +18,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.fetchApi();
   }
 
-  fetchApi() {
+  fetchApi(): void {
     this.productsService.getAllProducts().subscribe((products) => {
       this.products = products;
     });

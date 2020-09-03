@@ -10,28 +10,28 @@ import { ProductsService } from 'src/app/core/services/products/products.service
 export class CategoriesComponent implements OnInit {
   products: Product[];
   categories: Array<string> = [];
-  itemCategories: Object = {};
+  itemCategories: object = {};
   constructor(private productsService: ProductsService) {
     this.fetchApi();
   }
 
   ngOnInit(): void {}
 
-  fetchApi() {
+  fetchApi(): void {
     this.productsService.getAllProducts().subscribe((product) => {
       this.products = product;
       this.getProductByCategory();
     });
   }
 
-  getCategory() {
+  getCategory(): string[] {
     if (this.products) {
       const category = this.products.map((item) => item.category);
       return category;
     }
   }
 
-  filterByCategory(category): Object {
+  filterByCategory(category): object {
     const filterCategories = {};
     for (const item of category) {
       filterCategories[item] = this.products.filter(

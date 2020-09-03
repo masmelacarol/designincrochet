@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '@environments/environment';
+import { User } from 'firebase';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
@@ -10,7 +11,6 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private id: string;
   constructor(
     private auth: AngularFireAuth,
     private http: HttpClient,
@@ -23,7 +23,7 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Promise<any> {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -31,15 +31,7 @@ export class AuthService {
     return this.auth.user;
   }
 
-  setId(id) {
-    return (this.id = id);
-  }
-
-  getId() {
-    return this.id;
-  }
-
-  generateToken(uid: string) {
+  generateToken(uid: string): Observable<any> {
     return this.http
       .post(`${environment.url_api}/users/auth`, {
         uid,
@@ -52,15 +44,15 @@ export class AuthService {
       );
   }
 
-  logout() {
+  logout(): Promise<any> {
     return this.auth.signOut();
   }
 
-  hasUser() {
+  hasUser(): Observable<User> {
     return this.auth.authState;
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse): Observable<never> {
     return throwError('Salio algo mal');
   }
 }
