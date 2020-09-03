@@ -20,7 +20,12 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {
     this.total$ = this.cartService.cart$.pipe(
-      map((cartProducts) => cartProducts.length)
+      map((cartProducts) => {
+        const countProducts = cartProducts
+          .map((cart) => cart.count)
+          .reduce((value, count) => value + count, 0);
+        return countProducts;
+      })
     );
   }
 
