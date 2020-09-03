@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { CartService } from '@core/services/cart/cart.service';
 import { Product } from 'src/app/core/models/model';
 
@@ -15,7 +15,7 @@ export class ProductCardComponent implements OnInit {
   productCart: Product;
   size: FormControl;
   constructor(private cartService: CartService) {
-    this.size = new FormControl('');
+    this.size = new FormControl('', Validators.required);
     this.size.valueChanges.subscribe((value) => {
       this.productCart = {
         ...this.product,
@@ -27,6 +27,8 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {}
 
   addCart(): void {
-    this.cartService.addCart(this.productCart);
+    if (this.size.valid) {
+      this.cartService.addCart(this.productCart);
+    }
   }
 }

@@ -50,6 +50,8 @@ export class CartComponent implements OnInit {
     this.cartService.deleteCart(product);
   }
 
+  getCartTotal() {}
+
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],

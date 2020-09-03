@@ -42,6 +42,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="button__update" *ngIf="products.length > 0">
+        <button class="btn" (click)="getCartTotal()">Actualizar</button>
+      </div>
     </div>
   </div>
   <section class="infoPayment">

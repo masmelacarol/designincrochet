@@ -19,6 +19,9 @@
           <select *ngIf="!isCard" [formControl]="size">
             <option *ngFor="let sz of product.size" [value]="sz">{{sz}}</option>
           </select>
+          <div *ngIf="size.invalid && (size.dirty || size.touched)">
+            <small class="danger">Si quieres añadir un producto en el carrito, debes elegir una talla.</small>
+          </div>
         </div>
       </div>
       <div class="card__container--button" *ngIf="!isCard">
