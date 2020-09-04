@@ -17,30 +17,30 @@
         <button type="submit" class="btn" [disabled]="form.invalid">Enviar</button>
       </form>
     </div>
-    <div class="comments__content reviews">
-      <div class="no-content" *ngIf="!true">
+    <div class="comments__content reviews" *ngIf="comments">
+      <div class="no-content" *ngIf="comments.length === 0">
         <figure>
           <img ngxGravatar [email]="'no-gravatar@gravatar.com'" [fallback]="fallbacks[3]" alt="user-avatar" />
         </figure>
         <p>No hay comentarios sobre este producto.</p>
       </div>
-      <div class="comments__content--card" *ngIf="true">
-        <div class="item">
-          <figure class="avatar">
-            <img ngxGravatar [email]="''" [fallback]="fallbacks[0]" alt="user-avatar" />
-          </figure>
-          <h6>{{ email || "user" }}</h6>
-        </div>
-        <div class="item">
-          <div class="">
-            <star-rating [starType]="'svg'" [rating]="2.63" [readOnly]="true"></star-rating>
+      <div *ngIf="comments.length > 0">
+        <div class="comments__content--card" *ngFor="let comment of comments">
+          <div class="item">
+            <figure class="avatar">
+              <img ngxGravatar [email]="comment.users.email" [fallback]="fallbacks[0]" alt="user-avatar" />
+            </figure>
+            <h6>{{ comment.users.username || "user" }}</h6>
           </div>
-        </div>
-        <div class="description__comment">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae officiis facere iusto! Sit officiis,
-            voluptatem aspernatur dicta beatae reiciendis debitis sint tempore! Unde commodi, quidem ut illum possimus
-            maxime architecto.</p>
+          <div class="item">
+            <div class="">
+              <star-rating [starType]="'svg'" [rating]="comment.rating" [readOnly]="true"></star-rating>
+            </div>
+          </div>
+          <div class="description__comment">
+            <p>{{comment.comment}}</p>
 
+          </div>
         </div>
       </div>
     </div>

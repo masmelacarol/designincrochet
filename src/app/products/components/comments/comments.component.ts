@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { CommentsService } from '@core/services/comments/comments.service';
 import { RatingChangeEvent } from 'angular-star-rating';
 
 @Component({
@@ -8,17 +10,33 @@ import { RatingChangeEvent } from 'angular-star-rating';
   styleUrls: ['./comments.component.scss'],
 })
 export class CommentsComponent implements OnInit {
+  productId;
   email = 'carolstefannym@gmail.com';
   score = 0;
   form: FormGroup;
+  comments;
 
   fallbacks = ['monsterid', 'retro', 'robohash', 'wavatar'];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private commentsService: CommentsService,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.buildForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.productId = params.id;
+      this.commentsService
+        .getAllComentsByProduct(this.productId)
+        .subscribe((comments) => {
+          console.log('CommentsComponent -> comments', comments);
+          this.comments = comments;
+        });
+    });
+  }
 
   onRatingChange($event: RatingChangeEvent): void {
     this.score = $event.rating;
