@@ -2,35 +2,51 @@
   <div class="card__container">
     <div class="card__container--content">
       <div class="card__container--description">
-        <h6>{{product.name}}</h6>
-        <strong [ngClass]="{'end': isCard}">{{product.price | currency}}</strong>
-        <p>{{product.description | slice:0:sliceSize }}</p>
+        <h6>{{ product.name }}</h6>
+        <strong [ngClass]="{ end: isCard }">
+          {{ product.price | currency }}
+        </strong>
+        <p>{{ product.description | slice: 0:sliceSize }}</p>
         <div class="detail">
-          <h6>Color: </h6>
+          <h6>Color:</h6>
           <div *ngFor="let bg of product.color">
             <span class="color" [style.background]="bg"></span>
           </div>
         </div>
         <div class="detail">
-          <h6>Talla: </h6>
+          <h6>Talla:</h6>
           <div *ngFor="let sz of product.size">
-            <span *ngIf="isCard">{{sz}}</span>
+            <span *ngIf="isCard">{{ sz }}</span>
           </div>
           <select *ngIf="!isCard" [formControl]="size">
-            <option *ngFor="let sz of product.size" [value]="sz">{{sz}}</option>
+            <option value="" disabled selected>Elige una opción</option>
+            <option *ngFor="let sz of product.size" [value]="sz">
+              {{ sz }}
+            </option>
           </select>
-          <div *ngIf="size.invalid && (size.dirty || size.touched)">
-            <small class="danger">Si quieres añadir un producto en el carrito, debes elegir una talla.</small>
+          <div
+            class="text_danger"
+            *ngIf="size.invalid && (size.dirty || size.touched)"
+          >
+            <small class="danger">
+              Si quieres añadir un producto en el carrito, debes elegir una
+              talla.
+            </small>
           </div>
         </div>
       </div>
       <div class="card__container--button" *ngIf="!isCard">
-        <button class="btn" (click)="addCart()">Añadir al carrito</button>
+        <button [disabled]="size.invalid" class="btn" (click)="addCart()">
+          Añadir al carrito
+        </button>
       </div>
     </div>
-    <div class="card__container--content image" [ngClass]="(isCard === true) ?'card-image': 'detail-image'">
+    <div
+      class="card__container--content image"
+      [ngClass]="isCard === true ? 'card-image' : 'detail-image'"
+    >
       <figure>
-        <img [src]=" product.images" [alt]="product.name">
+        <img [src]="product.images" [alt]="product.name" />
       </figure>
     </div>
   </div>

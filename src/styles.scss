@@ -101,10 +101,10 @@ button,
   color: var(--color);
   border: none;
   outline: none;
-  cursor: pointer;
   font-size: 16px;
   line-height: 21px;
   background: transparent;
+  cursor: pointer;
   transition: all 0.5s;
 }
 
@@ -113,17 +113,26 @@ button,
   background: var(--bg-color-secondary);
   border-radius: 10px;
   text-transform: uppercase;
-  transition: all 0.5s;
+  cursor: pointer;
 
   &:hover {
-    background: var(--color);
-    color: var(--bg-white);
-    transition: all 0.5s;
+    box-shadow: 2px 2px 6px var(--color);
   }
+
+  &:disabled,
+  &[disabled] {
+    color: #666666;
+    cursor: not-allowed;
+  }
+
 }
 
-.danger {
-  color: #f44336;
-  font-size: 75%;
+.text_danger {
   margin-left: 10px;
+
+  .danger {
+    color: #f44336;
+    font-size: 75%;
+  }
+
 }

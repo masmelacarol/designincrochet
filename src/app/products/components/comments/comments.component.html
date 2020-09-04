@@ -2,20 +2,19 @@
   <div class="comments__container">
     <div class="comments__content">
       <h4>Opiniones de clientes</h4>
-      <div class="start-rating">
-        <star-rating [starType]="'svg'" ngDefaultControl (ratingChange)="onRatingChange($event)" [formControl]="rating"
-          labelPosition="top">
-        </star-rating>
-        <p>{{score}} / 5</p>
-        <p>{{score}} opiniones</p>
-      </div>
       <form [formGroup]="form" (ngSubmit)="addComment($event)">
+        <div class="start-rating">
+          <star-rating [starType]="'svg'" ngDefaultControl (ratingChange)="onRatingChange($event)"
+            formControlName="rating" labelPosition="top">
+          </star-rating>
+          <p>{{score}} / 5</p>
+          <p>{{score}} opiniones</p>
+        </div>
         <fieldset>
           <legend>Escribenos una opinión:</legend>
-          <textarea name="" id="" cols="60" rows="5" placeholder="Escribe tu comentario"
-            formControlName="comment"></textarea>
+          <textarea placeholder="Escribe tu comentario" formControlName="comment"></textarea>
         </fieldset>
-        <button type="submit" class="btn">Enviar</button>
+        <button type="submit" class="btn" [disabled]="form.invalid">Enviar</button>
       </form>
     </div>
     <div class="comments__content reviews">

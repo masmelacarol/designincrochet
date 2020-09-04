@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RatingChangeEvent } from 'angular-star-rating';
 
 @Component({
@@ -14,7 +9,6 @@ import { RatingChangeEvent } from 'angular-star-rating';
 })
 export class CommentsComponent implements OnInit {
   email = 'carolstefannym@gmail.com';
-  rating: FormControl;
   score = 0;
   form: FormGroup;
 
@@ -22,17 +16,11 @@ export class CommentsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.buildForm();
-    this.rating = new FormControl(0, Validators.required);
-    this.rating.valueChanges.subscribe((value) => {
-      console.log('CommentsComponent -> constructor -> value', value);
-      this.score = value;
-    });
   }
 
   ngOnInit(): void {}
 
   onRatingChange($event: RatingChangeEvent): void {
-    console.log('onRatingUpdated $event: ', $event);
     this.score = $event.rating;
   }
 
@@ -41,8 +29,9 @@ export class CommentsComponent implements OnInit {
     console.log('hola');
   }
 
-  private buildForm() {
+  private buildForm(): void {
     this.form = this.formBuilder.group({
+      rating: [0, [Validators.required]],
       comment: ['', [Validators.required, Validators.minLength(20)]],
     });
   }
