@@ -1,23 +1,23 @@
-<section class="comments">
+<section class="comments" *ngIf="(comments$ | async) as comments">
   <div class="comments__container">
     <div class="comments__content">
       <h4>Opiniones de clientes</h4>
       <form [formGroup]="form" (ngSubmit)="addComment($event)">
         <div class="start-rating">
-          <star-rating [starType]="'svg'" ngDefaultControl (ratingChange)="onRatingChange($event)"
+          <star-rating [starType]="'svg'" [rating]="score" ngDefaultControl (ratingChange)="onRatingChange($event)"
             formControlName="rating" labelPosition="top">
           </star-rating>
           <p>{{score}} / 5</p>
-          <p>{{score}} opiniones</p>
+          <p>{{comments.length}} opiniones</p>
         </div>
         <fieldset>
           <legend>Escribenos una opinión:</legend>
           <textarea placeholder="Escribe tu comentario" formControlName="comment"></textarea>
         </fieldset>
-        <button type="submit" class="btn" [disabled]="form.invalid">Enviar</button>
+        <button type="submit" class="btn" [disabled]="(form.invalid && score === 0)">Enviar</button>
       </form>
     </div>
-    <div class="comments__content reviews" *ngIf="comments">
+    <div class="comments__content reviews">
       <div class="no-content" *ngIf="comments.length === 0">
         <figure>
           <img ngxGravatar [email]="'no-gravatar@gravatar.com'" [fallback]="fallbacks[3]" alt="user-avatar" />
