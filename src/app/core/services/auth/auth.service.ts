@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '@environments/environment';
 import { User } from 'firebase';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
@@ -17,13 +17,16 @@ export class AuthService {
     private tokenService: TokenService
   ) {}
 
-  createUser(user): Observable<any> {
+  createUser(user: User): Observable<User> {
     return this.http
-      .post(`${environment.url_api}/users`, user)
+      .post<User>(`${environment.url_api}/users`, user)
       .pipe(catchError(this.handleError));
   }
 
-  login(email: string, password: string): Promise<any> {
+  login(
+    email: string,
+    password: string
+  ): Promise<firebase.auth.UserCredential> {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -31,7 +34,14 @@ export class AuthService {
     return this.auth.user;
   }
 
-  generateToken(uid: string): Observable<any> {
+  getUser(uid: string): Observable<User> {
+    return this.http.get<User>(`${environment.url_api}/users/${uid}`).pipe(
+      catchError(this.handleError),
+      map((response: any) => response.body)
+    );
+  }
+
+  generateToken(uid: string): Observable<{}> {
     return this.http
       .post(`${environment.url_api}/users/auth`, {
         uid,
@@ -44,7 +54,7 @@ export class AuthService {
       );
   }
 
-  logout(): Promise<any> {
+  logout(): Promise<void> {
     return this.auth.signOut();
   }
 
@@ -53,6 +63,7 @@ export class AuthService {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log('error', error);
     return throwError('Salio algo mal');
   }
 }
