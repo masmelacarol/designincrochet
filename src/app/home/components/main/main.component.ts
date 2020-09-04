@@ -20,7 +20,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   fetchApi(): void {
     this.productsService.getAllProducts().subscribe((products) => {
-      this.products = products;
+      this.products.push(products);
     });
   }
 

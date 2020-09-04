@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from '@core/models/model';
 import { environment } from '@environments/environment';
-import { User } from 'firebase';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { TokenService } from '../token/token.service';
@@ -17,7 +17,7 @@ export class AuthService {
     private tokenService: TokenService
   ) {}
 
-  createUser(user: User): Observable<User> {
+  createUser(user: User): Observable<Partial<User>> {
     return this.http
       .post<User>(`${environment.url_api}/users`, user)
       .pipe(catchError(this.handleError));
@@ -30,11 +30,11 @@ export class AuthService {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  isUser(): Observable<firebase.User> {
+  isUser(): Observable<{}> {
     return this.auth.user;
   }
 
-  getUser(uid: string): Observable<User> {
+  getUser(uid: string): Observable<firebase.User> {
     return this.http.get<User>(`${environment.url_api}/users/${uid}`).pipe(
       catchError(this.handleError),
       map((response: any) => response.body)
@@ -58,7 +58,7 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-  hasUser(): Observable<User> {
+  hasUser(): Observable<firebase.User> {
     return this.auth.authState;
   }
 

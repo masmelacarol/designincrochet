@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
 
   fetchApi(): void {
     this.productsService.getAllProducts().subscribe((product) => {
-      this.products = product;
+      this.products.push(product);
       this.getProductByCategory();
     });
   }
