@@ -1,5 +1,5 @@
 <mdb-carousel [animation]="'fade'" class="carousel slide carousel-fade" [interval]="myInterval" [noWrap]="noWrapSlides"
-  [(activeSlide)]="activeSlideIndex" (activeSlideChange)="activeSlideChange()">
+  [(activeSlide)]="activeSlideIndex">
   <mdb-carousel-item *ngFor=" let product of products" color="primary">
     <div class=" carousel__content">
       <app-product-card [product]="product"></app-product-card>

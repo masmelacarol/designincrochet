@@ -12,9 +12,9 @@ Swiper.use([Navigation, Pagination]);
 export class MainComponent implements OnInit, AfterViewInit {
   products: Product[];
   mySwiper: Swiper;
-  myInterval: number = 3000;
-  activeSlideIndex: number = 0;
-  noWrapSlides: boolean = false;
+  myInterval = 2000;
+  activeSlideIndex = 0;
+  noWrapSlides = false;
 
   constructor(private productsService: ProductsService) {
     this.fetchApi();
@@ -22,12 +22,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-  activeSlideChange() {
-    console.log(this.activeSlideIndex);
-  }
   fetchApi(): void {
     this.productsService.getAllProducts().subscribe((products) => {
-      console.log('MainComponent -> fetchApi -> products', [products]);
       this.products = products;
     });
   }
