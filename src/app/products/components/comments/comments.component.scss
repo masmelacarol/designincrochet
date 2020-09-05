@@ -1,5 +1,5 @@
 .comments {
-  background: rgba(227, 246, 245, 0.6);
+  background: #e9e9f0;
   margin: 20px 0;
   box-shadow: 4px 4px 6px rgba(39, 35, 67, 0.25);
   border-radius: 0px 0px 20px 0px;
@@ -23,7 +23,7 @@
 
 
     &.reviews {
-      background: #E3F6F5;
+      background: var(--bg-main);
       border-radius: 0px 0px 20px 0px;
     }
 

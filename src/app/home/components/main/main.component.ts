@@ -12,7 +12,7 @@ Swiper.use([Navigation, Pagination]);
 export class MainComponent implements OnInit, AfterViewInit {
   products: Product[];
   mySwiper: Swiper;
-  myInterval = 2000;
+  myInterval = 5000;
   activeSlideIndex = 0;
   noWrapSlides = false;
 

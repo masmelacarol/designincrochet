@@ -48,9 +48,26 @@ p,
 a,
 input,
 label,
-legend {
+legend,
+span {
   font-size: 14px;
   margin: 0;
+  background: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: var(--color);
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 a {
@@ -101,12 +118,13 @@ button,
 .home__btn {
   font-family: var(--font-main);
   padding: 10px var(--pd);
-  color: var(--color);
+  color: var(--bg-white);
   border: none;
   outline: none;
   font-size: 16px;
   line-height: 21px;
   background: transparent;
+  outline: none;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -114,12 +132,14 @@ button,
 .btn,
 .home__btn {
   background: var(--bg-color-secondary);
+  color: var(--bg-white);
   border-radius: 10px;
   text-transform: uppercase;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 2px 2px 10px var(--color);
+    color: var(--bg-white);
+    box-shadow: 4px 2px 15px #7d7d7d;
   }
 
   &:disabled,

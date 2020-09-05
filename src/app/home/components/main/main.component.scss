@@ -1,11 +1,6 @@
 @import '../../../../vars';
 
 .carousel {
-  .swiper-container {
-    width: 600px;
-    height: 300px;
-  }
-
   &__content {
     margin: auto;
     width: 80%;
@@ -18,6 +13,7 @@
       gap: 20px;
       height: 80%;
       align-items: center;
+      pointer-events: none;
 
       .card__container {
         &--image {
