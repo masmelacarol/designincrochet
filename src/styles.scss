@@ -106,8 +106,12 @@ strong {
   }
 }
 
-img {
-  width: 100%;
+figure {
+  margin: 0;
+
+  img {
+    width: 100%;
+  }
 }
 
 ::-webkit-scrollbar {

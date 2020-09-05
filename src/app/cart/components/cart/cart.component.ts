@@ -67,6 +67,10 @@ export class CartComponent implements OnInit {
     }
   }
 
+  payCart() {
+    // const link = "https://wa.me/573123342596?text=Hola+DesignInCrochet%2C+estoy+interasad%40+en"
+  }
+
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],

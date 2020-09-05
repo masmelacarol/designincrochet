@@ -164,10 +164,11 @@
         }
 
         .whatsapp-contact {
-          a {
+          button {
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--color);
 
             figure {
               width: 40px;
