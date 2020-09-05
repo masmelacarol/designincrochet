@@ -1,7 +1,7 @@
 <section class="card" *ngIf="product" [ngClass]="product.theme">
   <div class="card__container">
     <div class="card__container--content">
-      <div class="card__container--description">
+      <div class="card__container--description" [ngClass]="{'card_box' : isCard }">
         <h6>{{ product.name }}</h6>
         <strong [ngClass]="{ end: isCard }">
           {{ product.price | currency }}
@@ -24,10 +24,7 @@
               {{ sz }}
             </option>
           </select>
-          <div
-            class="text_danger"
-            *ngIf="size.invalid && (size.dirty || size.touched)"
-          >
+          <div class="text_danger" *ngIf="size.invalid && (size.dirty || size.touched)">
             <small class="danger">
               Si quieres añadir un producto en el carrito, debes elegir una
               talla.
@@ -41,10 +38,7 @@
         </button>
       </div>
     </div>
-    <div
-      class="card__container--content image"
-      [ngClass]="isCard === true ? 'card-image' : 'detail-image'"
-    >
+    <div class="card__container--content image" [ngClass]="isCard === true ? 'card-image' : 'detail-image'">
       <figure>
         <img [src]="product.images" [alt]="product.name" />
       </figure>

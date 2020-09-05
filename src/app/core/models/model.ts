@@ -25,6 +25,9 @@ export interface User {
 export interface Comments {
   rating: number;
   comment: string;
-  users: object;
+  users: {
+    username: string;
+    email: string;
+  };
   products: string;
 }

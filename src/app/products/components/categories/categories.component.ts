@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/core/services/products/products.service
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  products: Product[];
+  products: Product[] = [];
   categories: Array<string> = [];
   itemCategories: object = {};
   constructor(private productsService: ProductsService) {
@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
 
   fetchApi(): void {
     this.productsService.getAllProducts().subscribe((product) => {
-      this.products.push(product);
+      this.products = product;
       this.getProductByCategory();
     });
   }

@@ -6,4 +6,11 @@
   .title {
     padding: var(--pd);
   }
+
+  &__container {
+
+    @media (max-width: 768px) {
+      height: 100%;
+    }
+  }
 }

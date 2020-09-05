@@ -47,8 +47,10 @@ h6 {
 p,
 a,
 input,
-label {
+label,
+legend {
   font-size: 14px;
+  margin: 0;
 }
 
 a {
@@ -56,6 +58,7 @@ a {
   color: var(--color);
 
   &:hover {
+    color: var(--color);
     text-decoration: underline;
   }
 }

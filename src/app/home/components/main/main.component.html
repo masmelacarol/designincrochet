@@ -1,12 +1,21 @@
-<section class="swiper-container carousel">
+<mdb-carousel [animation]="'fade'" class="carousel slide carousel-fade" [interval]="myInterval" [noWrap]="noWrapSlides"
+  [(activeSlide)]="activeSlideIndex" (activeSlideChange)="activeSlideChange()">
+  <mdb-carousel-item *ngFor=" let product of products" color="primary">
+    <div class=" carousel__content">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
+
+
+
+<!-- <section class="swiper-container carousel">
   <div class="swiper-wrapper">
-    <div *ngFor="let product of products" class="swiper-slide">
-      <div class=" carousel__content">
-        <app-product-card [product]="product"></app-product-card>
-      </div>
+    <div >
+      
     </div>
   </div>
   <div class="swiper-pagination swiper-pagination"></div>
   <div class="swiper-button-next swiper-button"></div>
   <div class="swiper-button-prev swiper-button"></div>
-</section>
+</section> -->

@@ -14,7 +14,7 @@
           <legend>Escribenos una opinión:</legend>
           <textarea placeholder="Escribe tu comentario" formControlName="comment"></textarea>
         </fieldset>
-        <button type="submit" class="btn" [disabled]="(form.invalid && score === 0)">Enviar</button>
+        <button type="submit" class="btn" [disabled]="(form.invalid || score === 0)">Enviar</button>
       </form>
     </div>
     <div class="comments__content reviews">

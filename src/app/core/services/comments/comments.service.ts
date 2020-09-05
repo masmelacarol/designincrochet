@@ -23,7 +23,12 @@ export class CommentsService {
       );
   }
 
-  addComment(idUser, idProduct, comment, rating): Observable<Comments> {
+  addComment(
+    idUser: string,
+    idProduct: string,
+    comment: string,
+    rating: number
+  ): Observable<any> {
     return this.http.post<Comments>(`${environment.url_api}/comments/`, {
       users: idUser,
       products: idProduct,

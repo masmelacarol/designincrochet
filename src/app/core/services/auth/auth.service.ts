@@ -34,7 +34,7 @@ export class AuthService {
     return this.auth.user;
   }
 
-  getUser(uid: string): Observable<firebase.User> {
+  getUser(uid: string): Observable<User> {
     return this.http.get<User>(`${environment.url_api}/users/${uid}`).pipe(
       catchError(this.handleError),
       map((response: any) => response.body)
