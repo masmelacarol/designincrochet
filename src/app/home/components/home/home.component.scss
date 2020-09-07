@@ -2,13 +2,19 @@
 
 .home {
   background: var(--bg-white);
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  // align-items: f;
+  align-content: space-around;
 
   .title {
     padding: var(--pd);
   }
 
   &__container {
-
+    height: 100%;
     @media (max-width: 768px) {
       height: 100%;
     }

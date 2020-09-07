@@ -76,6 +76,9 @@
         padding: var(--pd);
         height: 100px;
         width: 100%;
+        @media (max-width: 320px) {
+          min-width: 100%;
+        }
       }
 
       .btn {

@@ -11,6 +11,45 @@
         <p> No tiene ningun producto en el carrito</p>
         <a [routerLink]="['/']" class="home__btn">Ir al inicio</a>
       </div>
+      <!-- <div class="table" *ngIf="products.length > 0">
+        <div class="table__columns">
+          <h6></h6>
+          <h6>Producto</h6>
+          <h6>Talla</h6>
+          <h6>Precio</h6>
+          <h6>Cantidad</h6>
+          <h6>Subtotal</h6>
+        </div>
+        <div class="table__rows" *ngFor="let product of products; index as i">
+          <div class="col">
+            <figure>
+              <img [src]="product.images[0]" [alt]="product.name">
+            </figure>
+          </div>
+          <div class="col">
+            <p>{{product.name}}</p>
+          </div>
+          <div class="col">
+            <p>{{product.size}}</p>
+          </div>
+          <div class="col">            
+            <p>{{product.price | currency}}</p>
+          </div>
+          <div class="col">
+            <div class="count">
+              <p>{{product.count}}</p>
+              <div class="cart__btns">
+                <button class="delete" (click)="addCart(product)">^</button>
+                <button class="add" (click)="deleteCart(product)">^</button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <p>{{ product.price * product.count | currency}}</p>
+          </div>
+        </div>
+
+      </div> -->
       <table *ngIf="products.length > 0">
         <thead>
           <tr>
@@ -39,7 +78,7 @@
                   <button class="delete" (click)="addCart(product)">^</button>
                   <button class="add" (click)="deleteCart(product)">^</button>
                 </div>
-              </div>
+              </div>              
             </td>
             <td>{{ product.price * product.count | currency}}</td>
           </tr>

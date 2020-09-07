@@ -24,15 +24,95 @@
         flex-direction: column;
         width: 20%;
         margin: auto;
+        @media screen and (max-width: 768px){
+          width: 90%;
+        }
 
         .home__btn {
           margin-top: 10px;
         }
       }
 
+
       table {
         width: 100%;
         border-collapse: collapse;
+
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
+
+          /* Force table to not be like tables anymore */
+          table,
+          thead,
+          tbody,
+          th,
+          td,
+          tr {
+            display: block;
+          }
+
+          /* Hide table headers (but not display: none;, for accessibility) */
+          thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+          }
+
+          tr {
+            margin: 0 0 1rem 0;
+          }
+
+          td {
+            /* Behave  like a "row" */
+            border: none;
+            position: relative;
+            padding-left: 50%;
+            max-width: 100%;
+          }
+
+          tbody {
+            border: none;
+
+            tr {
+              border: 0.5px solid #c4c4c4;
+              border-radius: 20px ;
+            }
+          }
+
+          td:before {
+            position: absolute;
+            top: 20px;
+            left: 0px;
+            width: 32%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-weight: 700;
+          }
+
+          td:nth-of-type(1):before {
+            content: "";
+          }
+
+          td:nth-of-type(2):before {
+            content: "Producto";
+          }
+
+          td:nth-of-type(3):before {
+            content: "Talla";
+          }
+
+          td:nth-of-type(4):before {
+            content: "Precio";
+          }
+
+          td:nth-of-type(5):before {
+            content: "Cantidad";
+          }
+
+          td:nth-of-type(6):before {
+            content: "Subtotal";
+          }
+        }
 
         td,
         th {
@@ -56,10 +136,23 @@
 
         tbody {
           border-bottom: 0.5px solid #C4C4C4;
+          @media only screen and (max-width: 760px) {
+            border: none;
+          }
 
           td {
             border-left: 0.5px solid #C4C4C4;
-            max-width: 0px;
+            @media only screen and (max-width: 760px) {
+              border: none;
+            }
+
+            &:last-child {
+              border-right: 0.5px solid #C4C4C4;
+
+              @media only screen and (max-width: 760px) {
+                border: none;
+              }
+            }
 
             .count {
               background: #e7e7ec;
@@ -72,7 +165,9 @@
               width: 50%;
               margin: auto;
 
-
+              @media only screen and (max-width: 760px) {
+                width: 20%;
+              }
 
               p {
                 text-align: center;
@@ -96,10 +191,6 @@
                   padding: 0;
                 }
               }
-            }
-
-            &:last-child {
-              border-right: 0.5px solid #C4C4C4;
             }
           }
         }
