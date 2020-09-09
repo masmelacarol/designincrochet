@@ -21,6 +21,10 @@
     height: 400px;
     overflow-y: scroll;
 
+    @media (max-width: 375px) {
+      padding: var(--pd);
+    }
+
 
     &.reviews {
       background: var(--bg-main);
@@ -33,8 +37,9 @@
       border-radius: 20px;
       width: 80%;
       margin: 10px auto;
+      word-break: break-word;
 
-      @media (max-width: 600px) {
+      @media (max-width: 768px) {
         width: 100%;
         padding: calc(var(--pd) / 2);
       }
@@ -76,6 +81,7 @@
         padding: var(--pd);
         height: 100px;
         width: 100%;
+
         @media (max-width: 320px) {
           min-width: 100%;
         }

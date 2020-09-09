@@ -186,8 +186,12 @@
     &--button {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: -2px;
       pointer-events: visible;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 5px;
+      }
     }
   }
 }

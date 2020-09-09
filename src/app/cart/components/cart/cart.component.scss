@@ -5,6 +5,10 @@
   &__container {
     padding: var(--pd);
 
+    @media screen and (max-width: 375px) {
+      padding: 0;
+    }
+
     figure {
       width: 50px;
       margin-right: 10px;
@@ -19,12 +23,17 @@
       padding: var(--pd);
       text-align: center;
 
+      @media screen and (max-width: 375px) {
+        width: 100%;
+      }
+
       .no-content {
         display: flex;
         flex-direction: column;
         width: 20%;
         margin: auto;
-        @media screen and (max-width: 768px){
+
+        @media screen and (max-width: 768px) {
           width: 90%;
         }
 
@@ -38,8 +47,7 @@
         width: 100%;
         border-collapse: collapse;
 
-        @media only screen and (max-width: 760px),
-        (min-device-width: 768px) and (max-device-width: 1024px) {
+        @media only screen and (max-width: 768px) {
 
           /* Force table to not be like tables anymore */
           table,
@@ -72,10 +80,11 @@
 
           tbody {
             border: none;
+            text-align: end;
 
             tr {
               border: 0.5px solid #c4c4c4;
-              border-radius: 20px ;
+              border-radius: 20px;
             }
           }
 
@@ -114,6 +123,10 @@
           }
         }
 
+        @media only screen and (max-width: 340px) {
+          font-size: small;
+        }
+
         td,
         th {
           padding: var(--pd);
@@ -136,20 +149,22 @@
 
         tbody {
           border-bottom: 0.5px solid #C4C4C4;
-          @media only screen and (max-width: 760px) {
+
+          @media only screen and (max-width: 1024px) {
             border: none;
           }
 
           td {
             border-left: 0.5px solid #C4C4C4;
-            @media only screen and (max-width: 760px) {
+
+            @media only screen and (max-width: 1024px) {
               border: none;
             }
 
             &:last-child {
               border-right: 0.5px solid #C4C4C4;
 
-              @media only screen and (max-width: 760px) {
+              @media only screen and (max-width: 1024px) {
                 border: none;
               }
             }
@@ -208,9 +223,13 @@
   .infoPayment {
     padding-bottom: 10px;
 
+    @media screen and (max-width: 375px) {
+      width: 100%;
+    }
+
     &__container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
       &--content {
         padding: var(--pd);
