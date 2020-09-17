@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url_api: 'http://localhost:3000/products',
+  url_api: 'https://designincrochet.vercel.app',
   firebaseConfig: {
     apiKey: 'AIzaSyD2MNCNE0LB_UzeDk7ZhmYie7oaTHNxS1Q',
     authDomain: 'crochet-auth.firebaseapp.com',

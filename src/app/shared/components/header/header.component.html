@@ -32,6 +32,11 @@
             </a>
           </li>
           <li *ngIf="user">
+            <figure>
+              <img ngxGravatar [email]="email" fallback="identicon" alt="user-avatar" />
+            </figure>
+          </li>
+          <li *ngIf="user">
             <a mat-list-item (click)="logOut()">Logout</a>
           </li>
         </ul>

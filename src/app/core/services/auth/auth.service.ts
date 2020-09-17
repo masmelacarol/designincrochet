@@ -30,7 +30,7 @@ export class AuthService {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  isUser(): Observable<{}> {
+  isUser(): Observable<any> {
     return this.auth.user;
   }
 

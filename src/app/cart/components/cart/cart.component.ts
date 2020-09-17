@@ -62,8 +62,13 @@ export class CartComponent implements OnInit {
       this.user = {
         ...value,
       };
+      const produ = this.products$.subscribe((products) => {
+        console.log('CartComponent -> getUserForSend -> products', products);
+      });
+      console.log('CartComponent -> getUserForSend -> produ', produ);
 
       console.log('this.user', this.user);
+      console.log('this.product', produ);
     }
   }
 

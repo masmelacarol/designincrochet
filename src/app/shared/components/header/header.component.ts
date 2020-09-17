@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   user = false;
+  email = '';
   login;
   total$: Observable<number>;
   constructor(
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
     this.login = this.router.url === '/auth/login' ? false : true;
     this.authService.isUser().subscribe((user) => {
       if (user) {
+        this.email = user.email;
         this.user = true;
       }
     });

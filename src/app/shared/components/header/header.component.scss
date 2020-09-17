@@ -32,14 +32,19 @@
 
     &--nav {
       &.login {
-
         padding-top: 8px;
 
       }
 
       ul {
+        align-items: center;
+
         li {
-          margin-right: var(--mg);
+          margin-right: 20px;
+
+          figure {
+            margin: 0;
+          }
 
           @media (max-width: 425px) {
             margin-right: calc(var(--mg) / 2);
