@@ -62,27 +62,36 @@ export class CartComponent implements OnInit {
       this.user = {
         ...value,
       };
-      const produ = this.products$.subscribe((products) => {
-        console.log('CartComponent -> getUserForSend -> products', products);
-      });
-      console.log('CartComponent -> getUserForSend -> produ', produ);
-
-      console.log('this.user', this.user);
-      console.log('this.product', produ);
     }
   }
 
-  payCart() {
-    // const link = "https://wa.me/573123342596?text=Hola+DesignInCrochet%2C+estoy+interasad%40+en"
+  payCart(): void {
+    let productsCart = [];
+    this.products$.subscribe((products) => {
+      productsCart = products;
+    });
+    if (this.form.valid) {
+      this.cartService
+        .sendMail(
+          'Recibo',
+          'carolstefannym@gmail.com',
+          'designincrochet.app@gmail.com',
+          productsCart,
+          this.user,
+          this.total
+        )
+        .subscribe((data) => console.log('Enviadooo', data));
+      this.form.reset();
+    }
   }
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 }

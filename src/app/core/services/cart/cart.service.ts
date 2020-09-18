@@ -1,6 +1,9 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '@core/models/model';
-import { BehaviorSubject } from 'rxjs';
+import { environment } from '@environments/environment';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +13,7 @@ export class CartService {
   private cart = new BehaviorSubject<Product[]>([]);
 
   cart$ = this.cart.asObservable();
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   addCart(product: Product): void {
     const itExist = this.products.find((item) => {
@@ -37,5 +40,32 @@ export class CartService {
       itExist.count -= 1;
     }
     this.cart.next(this.products);
+  }
+
+  sendMail(
+    title: string,
+    mailTo: string,
+    mailFrom: string,
+    products: Product[],
+    user: object,
+    total: number
+  ) {
+    const data = {
+      title,
+      mailTo,
+      mailFrom,
+      products,
+      user,
+      total,
+    };
+
+    return this.http
+      .post(`${environment.url_api}/mail/send`, data)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log('error', error);
+    return throwError('Salio algo mal');
   }
 }

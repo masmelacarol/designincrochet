@@ -78,7 +78,7 @@
                   <button class="delete" (click)="addCart(product)">^</button>
                   <button class="add" (click)="deleteCart(product)">^</button>
                 </div>
-              </div>              
+              </div>
             </td>
             <td>{{ product.price * product.count | currency}}</td>
           </tr>
@@ -132,12 +132,12 @@
             <p>{{total + shipment | currency}}</p>
           </div>
         </div>
-        <div class="whatsapp-contact">
-          <button type="button" (click)="payCart()">
+        <div class="email">
+          <button [disabled]="form.invalid" type="submit" (click)="payCart()">
             <figure>
-              <img src="assets/images/icon-whatsapp.svg" alt="icon-whatsapp">
+              <img src="assets/images/icon-gmail.svg" alt="icon-gmail">
             </figure>
-            <span>Contactar para realizar el pago</span>
+            <span>Enviar el pedido</span>
           </button>
         </div>
       </div>

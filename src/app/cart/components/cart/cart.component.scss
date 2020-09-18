@@ -273,18 +273,36 @@
           }
         }
 
-        .whatsapp-contact {
+        .email {
           button {
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--color);
+            margin: auto;
+            box-shadow: 2px 4px 6px var(--bg-main);
+            border-radius: 20px;
+
+            &:disabled,
+            &[disabled] {
+              color: #666666;
+              background-color: var(--bg-main);
+              cursor: not-allowed;
+            }
 
             figure {
               width: 40px;
               margin-right: 10px;
             }
+
+            // &:hover {
+            //   background-color: var(--bg-color-secondary);
+            //   color: var(--bg-white);
+            // }
+
+
           }
+
         }
       }
     }
