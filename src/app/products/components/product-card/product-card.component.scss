@@ -111,11 +111,19 @@
           height: 100%;
           border-radius: 0 20px 20px 0;
 
+          @media screen and (max-width:459px) {
+            border-radius: 0 0 20px 20px;
+          }
+
           figure {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+
+            @media screen and (max-width:459px) {
+              width: 300px;
+            }
           }
         }
 
