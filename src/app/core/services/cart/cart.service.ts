@@ -42,6 +42,11 @@ export class CartService {
     this.cart.next(this.products);
   }
 
+  deleteAllCart(): void {
+    this.products = [];
+    this.cart.next(this.products);
+  }
+
   sendMail(
     title: string,
     mailTo: string,
@@ -49,7 +54,7 @@ export class CartService {
     products: Product[],
     user: object,
     total: number
-  ) {
+  ): Observable<any> {
     const data = {
       title,
       mailTo,

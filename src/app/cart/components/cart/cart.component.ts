@@ -81,7 +81,7 @@ export class CartComponent implements OnInit {
           this.total
         )
         .subscribe((data) => console.log('Enviadooo', data));
-      this.form.reset();
+      this.cartService.deleteAllCart();
     }
   }
 
