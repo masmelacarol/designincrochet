@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Product } from '@core/models/model';
 import { AuthService } from '@core/services/auth/auth.service';
 import { CartService } from '@core/services/cart/cart.service';
@@ -27,25 +29,34 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.products$ = this.cartService.cart$;
+    this.getPrice();
+    this.getUser();
+    this.buildForm();
+  }
 
+  ngOnInit(): void {}
+
+  getUser(): void {
     this.authService.isUser().subscribe((userInfo: User) => {
       this.user = {
         displayName: userInfo.displayName,
         email: userInfo.email,
       };
     });
+  }
+
+  getPrice(): void {
     this.products$.subscribe((product) => {
       this.total = product
         .map((item) => item.price * item.count)
         .reduce((value, count) => count + value, 0);
     });
-    this.buildForm();
   }
-
-  ngOnInit(): void {}
 
   addCart(product): void {
     this.cartService.addCart(product);
@@ -80,9 +91,19 @@ export class CartComponent implements OnInit {
           this.user,
           this.total
         )
-        .subscribe((data) => console.log('Enviadooo', data));
+        .subscribe(() => this.openSnackBar('Mensaje enviado'));
+
       this.cartService.deleteAllCart();
+      this.router.navigate(['/']).catch((error) => {
+        alert('no es valido');
+      });
     }
+  }
+
+  openSnackBar(msj): void {
+    this.snackBar.open(msj, 'Close', {
+      duration: 2000,
+    });
   }
 
   private buildForm(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.buildForm();
   }
@@ -24,16 +26,25 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     if (this.form.valid) {
       const value = this.form.value;
-      this.authService.login(value.email, value.password).then((user) => {
-        const {
-          user: { uid },
-        } = user;
-        this.authService.generateToken(uid).subscribe(() => console.log(''));
-        this.router.navigate(['/']).catch((error) => {
-          alert('no es valido');
-        });
-      });
+      this.authService
+        .login(value.email, value.password)
+        .then((user) => {
+          const {
+            user: { uid },
+          } = user;
+          this.authService.generateToken(uid).subscribe(() => console.log(''));
+          this.router.navigate(['/']).catch((error) => {
+            alert('no es valido');
+          });
+        })
+        .catch((err) => this.openSnackBar(err.message));
     }
+  }
+
+  openSnackBar(msj): void {
+    this.snackBar.open(msj, 'Close', {
+      duration: 2000,
+    });
   }
 
   private buildForm(): void {
